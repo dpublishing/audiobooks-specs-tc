@@ -15,7 +15,7 @@
 ## 文件清單
 ### 正式規格
 - [有聲書](https://dpublishing.github.io/audiobooks-specs-tc/audiobooks.html)（原文：[Audiobook](https://www.w3.org/TR/2020/REC-audiobooks-20201110/)）
-- [輕量包裝格式](https://dpublishing.github.io/EPUB32forTC/lpf.html)（原文：[Lightweight Packaging Format](https://www.w3.org/TR/2020/NOTE-lpf-20200319/)）
+- [輕量包裝格式](https://dpublishing.github.io/audiobooks-specs-tc/lpf.html)（原文：[Lightweight Packaging Format](https://www.w3.org/TR/2020/NOTE-lpf-20200319/)）
 
 ### 制定中草稿規格
 - [供出版品使用的同步媒體：總覽](https://dpublishing.github.io/audiobooks-specs-tc/synchronized-media-for-publications.html)（原文：[Synchronized Media for Publications:Overview](https://w3c.github.io/sync-media-pub/)）
