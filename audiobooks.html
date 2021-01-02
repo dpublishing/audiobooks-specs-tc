@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" lang="en-US" xml:lang="en-US">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="zh-hant" xml:lang="zh-hant">
 	<head>
 		<meta charset="utf-8" />
 		<meta name="generator" content="ReSpec 25.18.1" />
@@ -874,7 +874,7 @@
 		<section id="sotd" class="introductory">
 			<h2>本文件狀態</h2>
 			<p>
-				<em>本章解釋了本文件在其發布時的狀態。其他文件可以取代本文件。當下<abbr title="World Wide Web Consortium">W3C<abbr>出版品清單以及本技術報告的最新改版可於<a
+				<em>本章解釋了本文件在其發布時的狀態。其他文件可以取代本文件。當下<abbr title="World Wide Web Consortium">W3C</abbr>出版品清單以及本技術報告的最新改版可於<a
 						href="https://www.w3.org/TR/"><abbr title="World Wide Web Consortium">W3C</abbr>技術報告索引</a>下找到 https://www.w3.org/TR/。</em></p>
 			<p>本文件由<a href="https://www.w3.org/publishing/groups/publ-wg/">出版工作小組</a>發布為推薦規格。</p>
 			<p>推薦使用<a href="https://github.com/w3c/audiobooks/issues/">GitHub Issues</a>對本規格進行討論。此外，你也可以將意見寄送到我們的郵寄列表。請寄送到<a
@@ -891,7 +891,7 @@
 						title="World Wide Web Consortium">W3C</abbr>專利政策第六章</a>規定揭露其資訊。</p>
 			<p>本文件由<a id="w3c_process_revision"
 					href="https://www.w3.org/2020/Process-20200915/">2020年9月12日<abbr
-						title="World Wide Web Consortium">W3C</a>進程文件</a>所管控。</p>
+						title="World Wide Web Consortium">W3C</abbr>進程文件</a>所管控。</p>
 		</section>
 		<nav id="toc">
 			<h2 class="introductory" id="table-of-contents">目錄</h2>
@@ -1179,7 +1179,7 @@
 					<div role="heading" class="note-title marker" id="h-note-2" aria-level="4">
 						<span>注意事項</span>
 					</div>
-					<p class="">特性清單使用於 [<cite><a　class="bibref" data-link-type="biblio" href="#bib-schema.org" title="Schema.org">schema.org</a></cite>]與[<cite><a class="bibref" data-link-type="biblio"　href="#bib-pub-manifest">pub-manifest</a></cite>]解釋的特性正式名稱。也包含了在括號中的描述性標籤，當這些特性不明確時用以說明。</p>
+					<p class="">特性清單使用於 [<cite><a class="bibref" data-link-type="biblio" href="#bib-schema.org" title="Schema.org">schema.org</a></cite>]與[<cite><a class="bibref" data-link-type="biblio" href="#bib-pub-manifest">pub-manifest</a></cite>]解釋的特性正式名稱。也包含了在括號中的描述性標籤，當這些特性不明確時用以說明。</p>
 				</div>
 
 				<dl>
@@ -1394,8 +1394,8 @@
 }</code></pre>
 				</div>
 
-				<p>如果未定義<code>type</code>，則預設值推測為<a href="https://schema.org/Audiobook"><code><code>Audiobook</code></code> [ [<cite><a class="bibref" data-link-type="biblio"
-							href="#bib-schema.org" title="Schema.org">schema.org</a></cite>] 。</p>
+				<p>如果未定義<code>type</code>，則預設值推測為<a href="https://schema.org/Audiobook"><code>Audiobook</code></a>&nbsp;[<cite><a class="bibref" data-link-type="biblio"
+							href="#bib-schema.org" title="Schema.org">schema.org</a></cite>]。</p>
 			</section>
 
 			<section id="audio-properties">
@@ -1679,7 +1679,7 @@
 				<p>有聲書的歷史根於無障礙輔助的世界。不管是純聲音的出版品或者有著文字與聲音同步播放的出版品長久以來都用於協助有著輔助閱讀需求及偏好的使用者。</p>
 
 				<p>在出版品中提供無障礙輔助同步媒體的做法現在可以透過<a
-						href="https://www.w3.org/community/sync-media-pub/">供出版品使用的同步媒體社群小組<a>之方法達成。請參考該小組的成果以獲得更多製作那種內容以及將其導入有聲書的資訊。</p>
+						href="https://www.w3.org/community/sync-media-pub/">供出版品使用的同步媒體社群小組</a>之方法達成。請參考該小組的成果以獲得更多製作那種內容以及將其導入有聲書的資訊。</p>
 
 	
 
@@ -1744,8 +1744,7 @@
 									<p>讓<var>resourceDuration</var>持有個別資源的總長度。</p>
 								</li>
 								<li id="processing-duration-iterate">
-									<p>對每一個<var>resource</var>的<var>data [&quot;readingOrder&quot;] <a href="https://infra.spec.whatwg.org/#list-iterate">For each</a>
-										<var>resource</var> of <var>data ["readingOrder"] </var>：</p>
+									<p><a href="https://infra.spec.whatwg.org/#list-iterate">對每一個</a><var>resource</var> of <var>data["readingOrder"]</var>：</p>
 									<ol>
 										<li id="processing-duration-res-none">
 											<p>如果<var>resource [&quot;duration&quot;] </var>未定義，<a
