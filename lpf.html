@@ -154,7 +154,7 @@ dfn {
 }
 </style>
 		
-		<title>輕量包裝格式（Lightweight Packaging Format, LPF）</title>
+		<title>輕量封裝格式（Lightweight Packaging Format, LPF）</title>
 		
 		
 		
@@ -708,19 +708,19 @@ var [data-type] :hover::before {
   "generatedSubtitle": "Working Group Note 19 March 2020"
 }</script><link rel="stylesheet" href="https://www.w3.org/StyleSheets/TR/2016/W3C-WG-NOTE.css"></head>
 	<body class="h-entry"><div class="head">
-      <a class="logo" href="https://www.w3.org/"><img alt="W3C" src="https://www.w3.org/StyleSheets/TR/2016/logos/W3C" width="72" height="48"></a> <h1 id="title" class="title">輕量包裝格式<br />（Lightweight Packaging Format, LPF）</h1>
+      <a class="logo" href="https://www.w3.org/"><img alt="W3C" src="https://www.w3.org/StyleSheets/TR/2016/logos/W3C" width="72" height="48"></a> <h1 id="title" class="title">輕量封裝格式<br />（Lightweight Packaging Format, LPF）</h1>
       
       <h2>
         W3C工作小組備忘
         <time class="dt-published" datetime="2020-03-19">19 March 2020</time>
       </h2>
       <dl>
-        <dt>本版本：</dt><dd>
+        <dt>此版本：</dt><dd>
                 <a class="u-url" href="https://www.w3.org/TR/2020/NOTE-lpf-20200319/">https://www.w3.org/TR/2020/NOTE-lpf-20200319/</a>
               </dd><dt>最新發佈版本：</dt><dd>
                 <a href="https://www.w3.org/TR/lpf/">https://www.w3.org/TR/lpf/</a>
               </dd>
-              <dt>前版本：</dt>
+              <dt>前一版本：</dt>
               <dd><a href="https://www.w3.org/TR/2019/NOTE-lpf-20191205/">https://www.w3.org/TR/2019/NOTE-lpf-20191205/</a></dd>
         <dt>最新編輯草稿：</dt><dd><a href="https://w3c.github.io/lpf/">https://w3c.github.io/lpf/</a></dd>
         
@@ -728,7 +728,7 @@ var [data-type] :hover::before {
         
         
         
-        <dt>編輯：</dt>
+        <dt>編輯者：</dt>
         <dd class="p-author h-card vcard" data-editor-id="91888"><span class="p-name fn">Laurent Le Meur</span>
             (<a class="p-org org h-org h-card" href="https://www.edrlab.org">EDRLab</a>)
           </dd>
@@ -758,24 +758,24 @@ var [data-type] :hover::before {
       <hr title="Separator for header">
     </div>
 
-		<section class="informative introductory" id="abstract"><h2>概要</h2><p><em>本章節為非規範性。</em></p>
-			<p>本規格定義了一個檔案格式，以及包裝成單一檔案容器之處理模型，其含納一組關聯的資源以及相關的詮釋資料以組成一份<a href="#dfn-publication" class="internalDFN" data-link-type="dfn">數位出版品。</a></p>
+		<section class="informative introductory" id="abstract"><h2>概要</h2><p><em>本節不具規範性。</em></p>
+			<p>本規格定義了一個檔案格式，以及將構成一份<a href="#dfn-publication" class="internalDFN" data-link-type="dfn">數位出版品</a>之組成資源與相關詮釋資料集封裝成單一檔案容器的處理模型。</p>
 		</section>
 
 		<section class="informative introductory" id="sotd"><h2>本文件狀態</h2><p><em>
-			本章解釋了本文件在其發布時的狀態。其他文件可以取代本文件。當下<abbr title="World Wide Web Consortium">W3C</abbr>出版品清單可於<a href="https://www.w3.org/TR/"><abbr title="World Wide Web Consortium">W3C</abbr>技術報告索引</a>下進行查找https://www.w3.org/TR/。</em></p>
-		<p>本文件由<a href="https://www.w3.org/publishing/groups/publ-wg/">出版工作小組</a>發行為工作小組備忘。</p>
-		<p>推薦使用<a href="https://github.com/w3c/lpf/issues/">GitHub Issues</a>對本規格進行討論。此外，你也可以將意見寄送到我們的郵寄列表。請寄送到<a href="mailto:public-publ-wg@w3.org">public-publ-wg@w3.org</a>（<a href="https://lists.w3.org/Archives/Public/public-publ-wg/">郵件紀錄</a>）。</p>
-		<p>作為工作小組備忘的出版品不代表受到<abbr title="World Wide Web Consortium">W3C</abbr>會員所支持。此為草稿文件並且可能隨時受其他文件更新、取代或者淘汰。除了在工作進程外，不建議摘要本文件。</p>
-		<p data-deliverer="100074">本文件由<a href="https://www.w3.org/Consortium/Patent-Policy/"><abbr title="World Wide Web Consortium">W3C</abbr>專利政策</a>下營運的小組所製作。</p>
-        <p>小組不預期本文件成為<abbr title="World Wide Web Consortium">W3C</abbr>推薦規格。</p>
-        <p>本文件由<a id="w3c_process_revision" href="https://www.w3.org/2019/Process-20190301/">2019年3月1日<abbr title="World Wide Web Consortium">W3C</abbr>進程文件</a>所管控。</p>
+			本節解釋了本文件在其發布時的狀態。其他文件可能取代本文件。<abbr title="World Wide Web Consortium">W3C</abbr>的當前出版品清單以及本技術報告的最新版本可於位在https://www.w3.org/TR/之<a href="https://www.w3.org/TR/"><abbr title="World Wide Web Consortium">W3C</abbr>技術報告索引</a>中獲得。</em></p>
+		<p>本文件由<a href="https://www.w3.org/publishing/groups/publ-wg/">出版工作小組</a>以工作小組備忘形式發布。</p>
+		<p>推薦使用<a href="https://github.com/w3c/lpf/issues/">GitHub Issues</a>對本規格進行討論。此外，你也可以將意見寄送到我們的郵寄列表。請寄送到<a href="mailto:public-publ-wg@w3.org">public-publ-wg@w3.org</a>（<a href="https://lists.w3.org/Archives/Public/public-publ-wg/">郵件封存紀錄</a>）。</p>
+		<p>作為工作小組備忘的出版品並不意味著受到<abbr title="World Wide Web Consortium">W3C</abbr>會員所背書。這是一份草稿文件並且可能隨時受其他文件更新、取代或者淘汰。將本文件作為進行中工作以外的文件來引用是不合適的。</p>
+		<p data-deliverer="100074">本文件是由在<a href="https://www.w3.org/Consortium/Patent-Policy/"><abbr title="World Wide Web Consortium">W3C</abbr>專利政策</a>下運作的小組所製作。</p>
+        <p>此小組不預期本文件會成為<abbr title="World Wide Web Consortium">W3C</abbr>推薦規格。</p>
+        <p>本文件受<a id="w3c_process_revision" href="https://www.w3.org/2019/Process-20190301/">2019年3月1日<abbr title="World Wide Web Consortium">W3C</abbr>流程文件</a>所規範。</p>
         </section>
         <nav id="toc" role="doc-toc"><h2 class="introductory" id="table-of-contents">目錄</h2><ol class="toc">
 	        <li class="tocline"><a class="tocxref" href="#sec-introduction"><bdi class="secno">1. </bdi>導論</a></li>
 <li class="tocline"><a class="tocxref" href="#sec-terminology"><bdi class="secno">2. </bdi>術語</a></li>
 <li class="tocline"><a class="tocxref" href="#conformance"><bdi class="secno">3. </bdi>適用性</a></li>
-<li class="tocline"><a class="tocxref" href="#sec-zip"><bdi class="secno">4. </bdi>包裝格式</a></li>
+<li class="tocline"><a class="tocxref" href="#sec-zip"><bdi class="secno">4. </bdi>封裝格式</a></li>
 <li class="tocline"><a class="tocxref" href="#sec-compression"><bdi class="secno">5. </bdi>資源壓縮</a></li>
 <li class="tocline"><a class="tocxref" href="#sec-structure"><bdi class="secno">6. </bdi>檔案與目錄結構</a></li>
 <li class="tocline"><a class="tocxref" href="#sec-obtaining-manifest"><bdi class="secno">7. </bdi>取得出版品宣告</a></li>
@@ -785,191 +785,191 @@ var [data-type] :hover::before {
 <li class="tocline"><a class="tocxref" href="#informative-references"><bdi class="secno">C.2 </bdi>參考性文件</a></li></ol></li></ol></nav>
 
 		<section class="informative" id="sec-introduction">
-			<h2 id="x1-introduction"><bdi class="secno">1. </bdi>導論<a class="self-link" aria-label="§" href="#sec-introduction"></a></h2><p><em>本章節為非規範性。</em></p>
-			<p>數位出版品包裝用於：</p>
+			<h2 id="x1-introduction"><bdi class="secno">1. </bdi>導論<a class="self-link" aria-label="§" href="#sec-introduction"></a></h2><p><em>本節不具規範性。</em></p>
+			<p>一份數位出版品封裝檔是用於：</p>
 
 				<ul>
 					<li>
-						<p>在不同個人及/或不同組織間交換進行中的出版品包裝；</p>
+						<p>在不同個人及（或）不同組織間交換製作中的封裝出版品。</p>
 					</li>
 					<li>
-						<p>從出版社或者轉換業者提供完成的出版品包裝到不同的配送或者銷售管道；以及</p>
+						<p>出版社或者轉換業者提供已完成的封裝出版品給不同的分發商或者銷售管道。</p>
 					</li>
 					<li>
-						<p>提供出版品包裝給使用者或者使用者代理。</p>
+						<p>提供封裝出版品給使用者（user）或者使用者代理程式（user agent）。</p>
 					</li>
 				</ul>
 
-				<p>本規格基於已受驗證的技術且允許數位出版品能被以簡單的方式包裝，所以使用術語「輕量」於其名稱。</p>
+				<p>本規格是基於已受驗證的技術且允許數位出版品能被以簡單的方式進行封裝，因此其名稱使用了「輕量」的術語。</p>
 
 		</section>
 
 		<section class="informative" id="sec-terminology">
-			<h2 id="x2-terminology"><bdi class="secno">2. </bdi>術語<a class="self-link" aria-label="§" href="#sec-terminology"></a></h2><p><em>本章節為非規範性。</em></p>
+			<h2 id="x2-terminology"><bdi class="secno">2. </bdi>術語<a class="self-link" aria-label="§" href="#sec-terminology"></a></h2><p><em>本節不具規範性。</em></p>
 
-			<p>本文件使用的術語定義於<abbr title="World Wide Web Consortium">W3C</abbr>備忘「Web上的出版與連結」 [<cite><a class="bibref" data-link-type="biblio" href="#bib-publishing-linking" title="Publishing and Linking on the Web">publishing-linking</a></cite>] ，尤其包含了<a class="externalDFN" href="https://www.w3.org/TR/publishing-linking/#dfn-user">使用者</a>與<a class="externalDFN" href="https://www.w3.org/TR/publishing-linking/#dfn-user-agent">使用者代理</a>。</p>
+			<p>本文件使用了定義於<abbr title="World Wide Web Consortium">W3C</abbr>備忘「Web上的出版與連結」 [<cite><a class="bibref" data-link-type="biblio" href="#bib-publishing-linking" title="Publishing and Linking on the Web">publishing-linking</a></cite>] 中的術語，特別是包含了<a class="externalDFN" href="https://www.w3.org/TR/publishing-linking/#dfn-user">使用者（user）</a>與<a class="externalDFN" href="https://www.w3.org/TR/publishing-linking/#dfn-user-agent">使用者代理（user agent）</a>。</p>
 
 			<p>此外，以下術語定義專供本規格所使用：:</p>
 
 			<dl class="termlist">
 				<dt><dfn id="dfn-codec" data-dfn-type="dfn">編碼內容類型（Codec content types）</dfn></dt>
 				<dd>
-					<p>內容類型因其內建的二進位格式特質，例如影片及聲音媒體類型其已經設計供壓縮最佳化，或者其提供最佳化的串流相容性。</p>
+					<p>本質為二進位格式性質的內容類型，例如為了壓縮最佳化所設計或者提供最佳化串流能力的影片及聲音等媒體類型。</p>
 				</dd>
 				<dt><dfn id="dfn-non-codec" data-dfn-type="dfn">非編碼內容類型（Non-Codec content types）</dfn></dt>
 				<dd>
-					<p>內容類型因其內在資料結構而能受益於壓縮，例如基於字元字串之檔案格式（例如HTML、CSS等。）。</p>
+					<p>因其內在資料結構特性而利於壓縮的內容類型，例如基於字元與字串之檔案格式（如HTML、CSS…等）。</p>
 				</dd>
-				<dt><dfn id="dfn-package" data-lt="Packages|Package" data-dfn-type="dfn">包裝（Package）</dfn></dt>
+				<dt><dfn id="dfn-package" data-lt="Packages|Package" data-dfn-type="dfn">封裝檔（Package）</dfn></dt>
 				<dd>
-					<p>一組由構成的資源以及相關的詮釋資料以組成一份數位出版品之單一檔案容器。</p>
+					<p>由構成數位出版品的一組組成資源與相關詮釋資料集所形成的單一檔案容器。</p>
 				</dd>
 				<dt><dfn id="dfn-primary-entry-page" data-dfn-type="dfn">主要進入頁面（Primary Entry Page）</dfn></dt>
 				<dd>
-					<p>數位出版品所偏好的起始資源，在某些案例中可用於發現其出版品宣告。</p>
+					<p>數位出版品的首選起始資源，在某些案例中可用於發現其出版品宣告。</p>
 				</dd>
 				<dt><dfn id="dfn-publication" data-lt="Digital Publications|Digital Publication" data-dfn-type="dfn">數位出版品（Digital Publication）</dfn></dt>
 				<dd>
-					<p>一組構成的資源與相關的詮釋資料，被組織在一起為一可獨特識別的群組。</p>
+					<p>由一組組成資源與相關詮釋資料所組織在一起而型成的一個具獨特性的可識別群組。</p>
 				</dd>
 				<dt><dfn id="dfn-web-publication-manifest" data-lt="Publication Manifests|Publication Manifest" data-dfn-type="dfn" data-plurals="publication manifests">出版品宣告（Publication Manifest）</dfn></dt>
 				<dd>
-					<p>如定義在 [<cite><a class="bibref" data-link-type="biblio" href="#bib-pub-manifest" title="Publication Manifest">pub-manifest</a></cite>] 中，採 [<cite><a class="bibref" data-link-type="biblio" href="#bib-json-ld" title="JSON-LD 1.0">JSON-LD</a></cite>] 的數位出版品表述。</p>
+					<p>採用 [<cite><a class="bibref" data-link-type="biblio" href="#bib-pub-manifest" title="Publication Manifest">pub-manifest</a></cite>] 中對數位出版品的定義並以 [<cite><a class="bibref" data-link-type="biblio" href="#bib-json-ld" title="JSON-LD 1.0">JSON-LD</a></cite>] 形式呈現描述的數位出版品資源清單宣告。</p>
 				</dd>
 				<dt><dfn id="dfn-root-directory" data-lt="Root Directories|Root Directory" data-dfn-type="dfn">根目錄（Root Directory）</dfn></dt>
 				<dd>
-					<p>包裝檔案系統的基礎目錄。</p>
+					<p>封裝檔案系統的基底目錄。</p>
 				</dd>
 			</dl>
 
-			<p>每一章節術語僅在第一次出現時，連結到其定義。</p>
+			<p>每個術語僅在第一次於章節出現中時才會連結到其定義。</p>
 
 		</section>
 
-		<section class="informative" id="conformance"><h2 id="x3-conformance"><bdi class="secno">3. </bdi>適用性<a class="self-link" aria-label="§" href="#conformance"></a></h2><p><em>本章節為非規範性。</em></p><p>除了標註為非規範性的章節，本規格中所有製作指針、圖表、範例與注意事項都為非規範性。其餘本規格中的內容皆為規範性。</p>
-		<p>關鍵字：<em class="rfc2119">可以（MAY）</em>、<em class="rfc2119">必需（MUST）</em>、<em class="rfc2119">應該（SHOULD）</em>應該以<a href="https://tools.ietf.org/html/bcp14">BCP 14</a> [<cite><a class="bibref" data-link-type="biblio" href="#bib-rfc2119" title="Key words for use in RFCs to Indicate Requirement Levels">RFC2119</a></cite>] [<cite><a class="bibref" data-link-type="biblio" href="#bib-rfc8174" title="Ambiguity of Uppercase vs Lowercase in RFC 2119 Key Words">RFC8174</a></cite>] 之記述解釋，同時也僅於在出現時以全大寫（中文為斜體）顯示。</p>
+		<section class="informative" id="conformance"><h2 id="x3-conformance"><bdi class="secno">3. </bdi>一致性<a class="self-link" aria-label="§" href="#conformance"></a></h2><p><em>本節不具規範性。</em></p><p>除了標註為不具規範性的章節外，本規格中所有製作指引、圖表、範例與注意事項亦不具規範性。其餘本規格中的內容則均為具規範性。</p>
+		<p>本文件中出現之關鍵字<em class="rfc2119">可以（MAY）</em>、<em class="rfc2119">必需（MUST）</em>、<em class="rfc2119">應該（SHOULD）</em>之解釋以<a href="https://tools.ietf.org/html/bcp14">BCP 14</a> [<cite><a class="bibref" data-link-type="biblio" href="#bib-rfc2119" title="Key words for use in RFCs to Indicate Requirement Levels">RFC2119</a></cite>] [<cite><a class="bibref" data-link-type="biblio" href="#bib-rfc8174" title="Ambiguity of Uppercase vs Lowercase in RFC 2119 Key Words">RFC8174</a></cite>] 所描述為準，同時也僅在出現時以全大寫（中文為粗體）顯示。</p>
 			
 		</section>
 
 		<section class="informative" id="sec-zip">
 
-				<h2 id="x4-packaging-format"><bdi class="secno">4. </bdi>包裝格式<a class="self-link" aria-label="§" href="#sec-zip"></a></h2><p><em>本章節為非規範性。</em></p>
+				<h2 id="x4-packaging-format"><bdi class="secno">4. </bdi>封裝格式<a class="self-link" aria-label="§" href="#sec-zip"></a></h2><p><em>本節不具規範性。</em></p>
 
-				<p>為了將一組構成的資源與相關的詮釋資料組成數位出版品，本規格採用定義在ISO/IEC 21320-1:2015 ( [<cite><a class="bibref" data-link-type="biblio" href="#bib-iso21320" title="Document Container File - ISO/IEC 21320">ISO21320</a></cite>] 與 [<cite><a class="bibref" data-link-type="biblio" href="#bib-zip" title=".ZIP File Format Specification">zip</a></cite>] )中之ZIP格式。</p>
+				<p>為了將構成數位出版品的組成資源與相關詮釋資料集封裝起來，本規格採用定義在ISO/IEC 21320-1:2015 ( [<cite><a class="bibref" data-link-type="biblio" href="#bib-iso21320" title="Document Container File - ISO/IEC 21320">ISO21320</a></cite>] 與 [<cite><a class="bibref" data-link-type="biblio" href="#bib-zip" title=".ZIP File Format Specification">zip</a></cite>] )中之ZIP格式。</p>
 
 		</section>
 
 		<section class="informative" id="sec-compression">
 	
-				<h2 id="x5-compression-of-resources"><bdi class="secno">5. </bdi>資源壓縮<a class="self-link" aria-label="§" href="#sec-compression"></a></h2><p><em>本章節為非規範性。</em></p>
+				<h2 id="x5-compression-of-resources"><bdi class="secno">5. </bdi>資源壓縮<a class="self-link" aria-label="§" href="#sec-compression"></a></h2><p><em>本節不具規範性。</em></p>
 
-				<p>當儲存於包裝中，<a href="#dfn-non-codec" class="internalDFN" data-link-type="dfn">非編碼內容類型</a>的資源<em class="rfc2119" title="SHOULD">應該</em>被壓縮並且<em class="rfc2119" title="MUST">必需</em>使用Deflate壓縮演算法。這項實踐確保檔案實體能在包裝中以較小的尺寸存放。</p>
+				<p>當資源儲存於封裝檔中時，<a href="#dfn-non-codec" class="internalDFN" data-link-type="dfn">非編碼內容類型</a>的資源<em class="rfc2119" title="SHOULD">應該</em>被壓縮且<em class="rfc2119" title="MUST">必需</em>使用Deflate壓縮演算法。這項實踐確保檔案實體能在封裝檔中以較小的尺寸存放。</p>
 
-				<p><a href="#dfn-codec" class="internalDFN" data-link-type="dfn">編碼內容類型資源</a><em class="rfc2119" title="SHOULD">應該</em>以無壓縮的方式儲存。在這狀況下，壓縮會在製作時產生不必要的處理開銷（尤其對大型資源檔案而言）並且可能會在使用內容時影響聲音/影片的播放表現。</p>
+				<p><a href="#dfn-codec" class="internalDFN" data-link-type="dfn">編碼內容類型資源</a><em class="rfc2119" title="SHOULD">應該</em>以無壓縮的方式儲存。因為在這情況下，壓縮會在產製過程中產生不必要的處理成本（尤其是大型資源檔案）並且可能會影響使用聲音/影片時的播放效能。</p>
 
 				<div class="note" role="note" id="issue-container-generatedID"><div role="heading" class="note-title marker" id="h-note" aria-level="3"><span>注意事項</span></div><div class="">
-						<p>在某些狀況下，以某些加密配置（schema）進行壓縮組合時可能會阻礙使用者代理的處理部分內容要求（例如，HTTP位元組範圍）的能力，因為在技術上難以在媒體播放前確認整個資源的長度（例如，HTTP Content-Length標頭）。</p>
+						<p>在一些情況下，壓縮與某些加密方案結合使用時可能會阻礙使用者代理的「處理部分內容請求」能力（例如，HTTP位元範圍），這是因為在技術上難以在媒體播放前就確認整個資源的長度（例如，HTTP Content-Length標頭）。</p>
 				</div></div>
 
 		</section>
 
 		<section class="informative" id="sec-structure">
 	
-				<h2 id="x6-file-and-directory-structure"><bdi class="secno">6. </bdi>檔案與目錄結構<a class="self-link" aria-label="§" href="#sec-structure"></a></h2><p><em>本章節為非規範性。</em></p>
+				<h2 id="x6-file-and-directory-structure"><bdi class="secno">6. </bdi>檔案與目錄結構<a class="self-link" aria-label="§" href="#sec-structure"></a></h2><p><em>本節不具規範性。</em></p>
 
-				<p><a href="#dfn-package" class="internalDFN" data-link-type="dfn">包裝</a><em class="rfc2119" title="MUST">必需</em>在其<a href="#dfn-root-directory" class="internalDFN" data-link-type="dfn">根目錄</a>中包含至少一個以下檔案：</p>
+				<p><a href="#dfn-package" class="internalDFN" data-link-type="dfn">封裝檔</a><em class="rfc2119" title="MUST">必需</em>在其<a href="#dfn-root-directory" class="internalDFN" data-link-type="dfn">根目錄</a>中包含至少一個以下檔案：</p>
 					
 				<ul>
-						<li>名為<code>publication.json</code>的檔案，其<em class="rfc2119" title="MUST">必需</em>為定義供<a href="#dfn-web-publication-manifest" class="internalDFN" data-link-type="dfn">出版品宣告</a>使用的格式。</li>
-						<li>名為<code>index.html</code>的檔案，其<em class="rfc2119" title="MUST">必需</em>符合數位出版品<a href="#dfn-primary-entry-page" class="internalDFN" data-link-type="dfn">主要進入頁面</a>的需求。</li>
+						<li>名為<code>publication.json</code>的檔案，其內容<em class="rfc2119" title="MUST">必需</em>為<a href="#dfn-web-publication-manifest" class="internalDFN" data-link-type="dfn">出版品宣告</a>所定義的格式。</li>
+						<li>名為<code>index.html</code>的檔案，其<em class="rfc2119" title="MUST">必需</em>符合數位出版品對<a href="#dfn-primary-entry-page" class="internalDFN" data-link-type="dfn">主要進入頁面</a>的需求。</li>
 					</ul>
 
-				<p>根目錄本質上為虛擬的：使用者代理在內容未包裝時，可以或不可產生實體根目錄供包裝中的內容。</p>
+				<p>根目錄本質上為虛擬的：使用者代理進行封裝檔的解封裝時，產生或不產生存放內容的實體根目錄均可。</p>
 
-				<p>這兩個檔案的內容<em class="rfc2119" title="MUST">不得</em>被加密。</p>
+				<p>這兩個檔案的內容<em class="rfc2119" title="MUST">必需</em>不被加密。</p>
 
-				<p>包裝<em class="rfc2119" title="MUST">必需</em>也包含所有在數位出版品邊界中的資源，例如，在出版品宣告的預設閱讀順序以及資源清單中的資源集合所能取得的有限資源集。</p>
+				<p>封裝檔也<em class="rfc2119" title="MUST">必需</em>包含所有在該數位出版品範圍中的資源，也就是從預設閱讀順序和出版品宣告所列的資源清單組合中獲得的所有資源集合。</p>
 
-				<p>這些資源檔案<em class="rfc2119" title="MAY">可以</em>置放在根目錄下的任何子資料夾位置，或者放在根目錄中。</p>
+				<p>這些資源檔案<em class="rfc2119" title="MAY">可以</em>置放在根目錄下的任何子資料夾，或者放在根目錄中。</p>
 
-				<p>包裝中的內容<em class="rfc2119" title="MUST">必需</em>透過相對URL字串 [<cite><a class="bibref" data-link-type="biblio" href="#bib-url" title="URL Standard">url</a></cite>] 以參照到這些內容。</p>
+				<p>封裝檔中的內容<em class="rfc2119" title="MUST">必需</em>透過相對URL字串 [<cite><a class="bibref" data-link-type="biblio" href="#bib-url" title="URL Standard">url</a></cite>] 以參照到這些內容。</p>
 	
 				<div class="note" role="note" id="issue-container-generatedID-0"><div role="heading" class="note-title marker" id="h-note-0" aria-level="3"><span>注意事項</span></div><div class="">
-						<p> [<cite><a class="bibref" data-link-type="biblio" href="#bib-zip" title=".ZIP File Format Specification">zip</a></cite>] 規格對允許使用的檔案與資料夾名稱字元有些限制。當使用這些名稱時，作者必須小心使用這些字元，使在跨作業系統時能得到廣泛的互通性。</p>
+						<p> [<cite><a class="bibref" data-link-type="biblio" href="#bib-zip" title=".ZIP File Format Specification">zip</a></cite>] 規格對檔案與資料夾名稱允許使用的字元有些限制。當使用這類名稱時，作者必須小心使用這些字元，以使得在跨作業系統時能得到廣泛的互通性。</p>
 				</div></div>
 
 		</section>
 
 		<section class="informative" id="sec-obtaining-manifest">
 
-			<h2 id="x7-obtaining-a-publication-manifest"><bdi class="secno">7. </bdi>取得出版品宣告<a class="self-link" aria-label="§" href="#sec-obtaining-manifest"></a></h2><p><em>本章節為非規範性。</em></p>		
+			<h2 id="x7-obtaining-a-publication-manifest"><bdi class="secno">7. </bdi>取得出版品宣告<a class="self-link" aria-label="§" href="#sec-obtaining-manifest"></a></h2><p><em>本節不具規範性。</em></p>		
 
-			<p>當包裝在其根目錄中包含<code>publication.json</code>檔案時，出版品宣告可於開啟及分析該檔案時取得。</p>
+			<p>若封裝檔在其根目錄中包含<code>publication.json</code>檔案時，出版品宣告可於開啟及分析該檔案時取得。</p>
 
-			<p>除此之外，當包裝在其根目錄中包含<code>index.html</code>檔案時，出版品宣告可透過以下步驟取得：</p>
+			<p>除此之外，如果封裝檔在其根目錄中包含<code>index.html</code>檔案時，出版品宣告可透過以下步驟取得：</p>
 
 			<ol>
-					<li>由包裝中解壓縮<code>index.html</code>檔案時，其結果為<code>document</code>。</li>
+					<li>假定由封裝檔中解出<code>index.html</code>檔案的內容為<code>document</code>。</li>
 
-					<li>如果其不包含<code>text/html</code>或<code>application/xhtml+xml</code>媒體類型，結束此演算法。</li>
+					<li>如果其不包含<code>text/html</code>或<code>application/xhtml+xml</code>媒體類型（media type），結束此演算法。</li>
 
-					<li><code>document</code>之樹狀順序中，第一個<code>link</code>元素為<var>manifest link</var>，其<code>rel</code>屬性包含<code>publication token</code>。</li>
+					<li>將<code>document</code>之樹狀結構中，第一個<code>rel</code>屬性值為<code>publication</code>的<code>link</code>元素設為<var>manifest link</var>。</li>
 
 					<li>如果<var>manifest link</var>為<code>null</code>，結束此演算法。</li>
 
-					<li>如果<var>manifest link</var>的<code>href</code>屬性的值為空字串，結束此演算法。</li>
+					<li>如果<var>manifest link</var>的<code>href</code>屬性值為空字串，結束此演算法。</li>
 
 					<li>
-						<p>如果<var>manifest link</var>的<code>href</code>屬性值有非空白的<a href="https://url.spec.whatwg.org/#concept-url-fragment">斷片（fragment）</a>可識別<code>document</code>中的識別碼id時：</p>
+						<p>如果<var>manifest link</var>的<code>href</code>屬性值存在<a href="https://url.spec.whatwg.org/#concept-url-fragment">片段識別符號（fragment）</a>且可識別出<code>document</code>中的某個識別碼<var>id</var>時：</p>
 						<ol>
-							<li>樹狀順序中第一個<code>script</code>元素為<var>embedded manifest script</var>，其<code>id</code>屬性與<var>id</var>相同，及其<code>type</code>屬性等同於<code>application/ld+json</code>。</li>
+							<li>將樹狀構結中第一個<code>id</code>屬性與<var>id</var>相同且<code>type</code>屬性為<code>application/ld+json</code>的<code>script</code>元素設為<var>embedded manifest script</var>。</li>
 
 							<li>如果<var>embedded manifest script</var>為<code>null</code>，結束此演算法。</li>
 
-							<li><var>embedded manifest script</var>的<a href="https://dom.spec.whatwg.org/#concept-child-text-content">子文字內容</a>為讓<var>manifest text</var>。</li>
+							<li>將<var>embedded manifest script</var>的<a href="https://dom.spec.whatwg.org/#concept-child-text-content">子節點文字內容</a>存為<var>manifest text</var>。</li>
 						</ol>
 						<details>
 								<summary>解釋</summary>
-								<p>此分支用於當宣告嵌入在主要進入頁面時。該演算法確認<code>script</code>元素的位置並且取出宣告。</p>
+								<p>此分支流程用於當宣告內嵌於主要進入頁面時的情況。本演算法用來確認<code>script</code>元素的位置並且取出宣告。</p>
 							</details>
 					</li>
 					<li>否則：<ol>
-							<li><code>href</code>屬性的值為<var>manifest URL</var>作為。</li>
-							<li>如果<var>manifest URL</var>不是一個相對URL字串，就中止這些步驟。</li>
-							<li>透過<var>manifest URL</var>從包裝中將宣告取出。</li>
-							<li>開啟並且讀取宣告檔案，讓<var>manifest text</var>作為結果。</li>
+							<li>將<var>manifest URL</var>設為<code>href</code>屬性的值。</li>
+							<li>如果<var>manifest URL</var>不是一個相對的URL字串，中止這些步驟。</li>
+							<li>利用<var>manifest URL</var>從封裝檔中將宣告取出。</li>
+							<li>開啟並且讀取宣告檔案，其檔案內容即為<var>manifest text</var>。</li>
 						</ol>
 						<details>
 							<summary>解釋</summary>
-							<p>此分支用於當宣告在分隔的檔案時。其展示了標準程序以從包裝中取得宣告。</p>
+							<p>此分支流程用於當宣告位在獨立檔案時的情況。其展示了從封裝檔中取得宣告的標準程序。</p>
 						</details>
 					</li>
 			</ol>
 	
-			<p>如果包裝中同時存在<code>index.html</code>與<code>publication.json</code>，那麼主要進入頁面<em class="rfc2119" title="SHOULD">應該</em>包含對<code>publication.json</code>檔案之參照，遵從定義在本章節中的規則。</p>
+			<p>如果封裝檔中同時存在<code>index.html</code>與<code>publication.json</code>，則主要進入頁面<em class="rfc2119" title="SHOULD">應該</em>包含對<code>publication.json</code>檔案之參照，其規則請參照本章節之定義。</p>
 
 			<aside class="example" id="example-1"><div class="marker">
       <a class="self-link" href="#example-1">範例<bdi> 1</bdi></a>
     </div>
-				<p>這是一份出版品宣告，其位置位於根目錄，簡單地在主要進入頁面中透過 [<cite><a class="bibref" data-link-type="biblio" href="#bib-html" title="HTML Standard">HTML</a></cite>] <code>link</code>元素參照。</p>
+				<p>這是一份在根目錄下，簡單地在主要進入頁面中透過 [<cite><a class="bibref" data-link-type="biblio" href="#bib-html" title="HTML Standard">HTML</a></cite>] <code>link</code>元素參照的出版品宣告。</p>
 				<pre aria-busy="false"><code class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">link</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"publication.json"</span> <span class="hljs-attr">rel</span>=<span class="hljs-string">"publication"</span>/&gt;</span></code></pre>
-				<p>主要進入頁面中嵌入出版品宣告的範例於 [<cite><a class="bibref" data-link-type="biblio" href="#bib-audiobooks" title="Audiobooks">有聲書</a></cite>] 中提供。</p></aside>
+				<p>在主要進入頁面中嵌入出版品宣告的範例可參見 [<cite><a class="bibref" data-link-type="biblio" href="#bib-audiobooks" title="Audiobooks">有聲書</a></cite>] 規格。</p></aside>
 
 		</section>
 	
 		<section class="appendix informative" id="app-media-type">
-			<h2 id="a-the-application-lpf-zip-media-type"><bdi class="secno">A. </bdi><code>application/lpf+zip</code>媒體類別<a class="self-link" aria-label="§" href="#app-media-type"></a></h2><p><em>本章節為非規範性。</em></p>
+			<h2 id="a-the-application-lpf-zip-media-type"><bdi class="secno">A. </bdi><code>application/lpf+zip</code>媒體類別<a class="self-link" aria-label="§" href="#app-media-type"></a></h2><p><em>本節不具規範性。</em></p>
 
-			<p>本附錄註冊了<code>application/lpf+zip</code>媒體類型供輕量包裝格式使用。</p>
+			<p>本附錄註冊了<code>application/lpf+zip</code>媒體類型供輕量封裝格式使用。</p>
 
-			<p>輕量包裝格式（Lightweight Packaging Format, LPF）為一個基於 [<cite><a class="bibref" data-link-type="biblio" href="#bib-zip" title=".ZIP File Format Specification">zip</a></cite>] 封存格式之容器技術，用於將一組關聯的資源以及相關的詮釋資料包裝為單一檔案容器以組成數位出版品。LPF以其相關標準由<abbr title="World Wide Web Consortium">W3C</abbr>所維護並且定義。</p>
+			<p>輕量封裝格式（Lightweight Packaging Format, LPF）為一個基於 [<cite><a class="bibref" data-link-type="biblio" href="#bib-zip" title=".ZIP File Format Specification">zip</a></cite>] 封存格式之容器技術，用於將構成數位出版品的組成資源與相關詮釋資料集封裝成一個單一檔案容器。LPF和其相關標準由<abbr title="World Wide Web Consortium">W3C</abbr>所維護及定義。</p>
 
 			<dl class="variablelist">
-				<dt>MIME媒體類型名稱：</dt>
+				<dt>MIME媒體類別名稱：</dt>
 				<dd>
 					<p><code>application</code></p>
 				</dd>
-				<dt>MIME子類型名稱：</dt>
+				<dt>MIME子類別名稱：</dt>
 				<dd>
 					<p><code>lpf+zip</code></p>
 				</dd>
@@ -987,9 +987,9 @@ var [data-type] :hover::before {
 				</dd>
 				<dt>安全性考量：</dt>
 				<dd>
-					<p>適用於<code>application/zip</code>的安全性考量也適用於LPF檔案。例如，一個可能包含壓縮檔案的封存檔可能在硬碟上擴張填滿所有可用的磁碟空間。結果上，讀取LPF檔案的使用者代理應該嚴密地檢查所取得的資料的尺寸以及合規性。
+					<p>適用於<code>application/zip</code>的安全性考量也適用於LPF檔案。例如，一個封存檔可能包含了一個解壓縮時會在硬碟上擴張填滿所有可用磁碟空間的壓縮內容。因此，讀取LPF檔案的使用者代理應該嚴格地檢查所取得資料之檔案大小與正確性。
 </p>
-					<p>此外，由於各種內容類型都可能嵌入於LPF檔案，<code>application/zip</code>可以視為內容會帶來安全問題，例如，在包裝中包含了刻意的惡意執行內容。然而在這些案例中只會發生於使用者代理辨識並且處理額外內容，或者在內容進一步交付給其他使用者代理處理時，這都會引起潛在的安全問題。在這些案例中，安全考量落於本註冊文件領域之外。</p>
+					<p>此外，由於各種內容類型都可能嵌入於LPF檔案中，<code>application/lpf+zip</code>可能會被視為有安全疑慮的內容，例如在封裝檔中被故意包含了惡意的可執行內容。然而這些潛在的安全問題只會發生於當使用者代理可識別並處理該額外內容，或者該內容被進一步交付給其他使用者代理處理時的情境。在這樣的案例中，安全性考量將不屬於本註冊文件之範圍。</p>
 				</dd>
 				<dt>互通性考量：</dt>
 				<dd>
@@ -997,11 +997,11 @@ var [data-type] :hover::before {
 				</dd>
 				<dt>已發表規格：</dt>
 				<dd>
-					<p>本媒體類型註冊供輕量包裝格式（Lightweight Packaging Format, LPF）使用，如輕量包裝格式規格所敘述，位於<a href="https://www.w3.org/TR/lpf"><code>https://www.w3.org/TR/lpf</code></a>。</p>
+					<p>本媒體類型註冊供輕量封裝格式（Lightweight Packaging Format, LPF）使用，描述於位在<a href="https://www.w3.org/TR/lpf"><code>https://www.w3.org/TR/lpf</code></a>的輕量封裝格式規格。</p>
 				</dd>
-				<dt>使用該媒體類型的應用程式：</dt>
+				<dt>使用本媒體類型的應用程式：</dt>
 				<dd>
-					<p>本媒體類型目的用於多重互通應用程式，供電子書、有聲書、數位視覺旁白與其他類型之數位出版品之配送與消費使用。</p>
+					<p>本媒體類型之目的係用於在多種互通性應用程式間進行電子書、有聲書、數位視覺敘與其他類型之數位出版品之分發與消費使用。</p>
 				</dd>
 				<dt>額外資訊：</dt>
 				<dd>
@@ -1012,13 +1012,13 @@ var [data-type] :hover::before {
 						</dd>
 						<dt>副檔名：</dt>
 						<dd>
-							<p>LPF容器檔案多半可透過副檔名<code>.lpf</code>進行識別。</p>
+							<p>LPF檔案多半可透過副檔名<code>.lpf</code>識別。</p>
 						</dd>
 						<dt>麥金塔檔案類型代碼：</dt>
 						<dd>
 							<p>ZIP</p>
 						</dd>
-						<dt>斷片識別碼：</dt>
+						<dt>片段識別碼：</dt>
 						<dd>
 							<p>無</p>
 						</dd>
@@ -1028,24 +1028,24 @@ var [data-type] :hover::before {
 				<dd>
 					<p>Ivan Herman (ivan@w3.org)</p>
 				</dd>
-				<dt>預計用途：</dt>
+				<dt>預期用途：</dt>
 				<dd>
-					<p>COMMON</p>
+					<p>一般（COMMON）</p>
 				</dd>
 				<dt>作者/變更管控：</dt>
 				<dd>
-					<p>發布的規格是World Wide Web Consortium(<abbr title="World Wide Web Consortium">W3C</abbr>)之出版工作小組的成果產品。<abbr title="World Wide Web Consortium">W3C</abbr>對本規格有變更的管控權。</p>
+					<p>此發布規格是World Wide Web Consortium(<abbr title="World Wide Web Consortium">W3C</abbr>)出版工作小組的成果產出。<abbr title="World Wide Web Consortium">W3C</abbr>對本規格有變更的管控權。</p>
 				</dd>
 			</dl>
 
 		</section>
 
 		<section id="ack" class="appendix informative">
-    <h2 id="b-acknowledgements"><bdi class="secno">B. </bdi>謝詞<a class="self-link" aria-label="§" href="#ack"></a></h2><p><em>本章節為非規範性。</em></p>
-    <p>編輯對出版工作小組的成員對本規格的貢獻致謝：</p>
+    <h2 id="b-acknowledgements"><bdi class="secno">B. </bdi>致謝<a class="self-link" aria-label="§" href="#ack"></a></h2><p><em>本節不具規範性。</em></p>
+    <p>編輯者感謝所有出版工作小組的成員對本規格的貢獻：</p>
 
     <ul class="ack">
-                <li>Greg Albers (J. Paul Getty Trust)</li>
+        <li>Greg Albers (J. Paul Getty Trust)</li>
         <li>Franco Alvarado (Macmillan Learning)</li>
         <li>Boris Anthony (The Rebus Foundation)</li>
         <li>Luc Audrain (Hachette Livre)</li>
