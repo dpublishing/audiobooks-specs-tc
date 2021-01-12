@@ -14,7 +14,7 @@
 
 ## 文件清單
 ### 正式規格
-- [有聲書](https://dpublishing.github.io/audiobooks-specs-tc/audiobooks.html)（原文：[Audiobook](https://www.w3.org/TR/2020/REC-audiobooks-20201110/)）
+- [有聲書](https://dpublishing.github.io/audiobooks-specs-tc/audiobooks.html)（原文：[Audiobooks](https://www.w3.org/TR/2020/REC-audiobooks-20201110/)）
 - [輕量封裝格式](https://dpublishing.github.io/audiobooks-specs-tc/lpf.html)（原文：[Lightweight Packaging Format](https://www.w3.org/TR/2020/NOTE-lpf-20200319/)）
 
 ### 制定中草稿規格
