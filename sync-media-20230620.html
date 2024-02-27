@@ -1,0 +1,784 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>供出版品使用的同步媒體（社群小組）: SyncMedia 1.0</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta charset="utf-8"><link rel="stylesheet" href="css/spec-extra.css"/>    
+        <script src='https://www.w3.org/Tools/respec/respec-w3c' class='remove' defer="defer"></script>
+        <script class='remove'>
+            var respecConfig = {
+                specStatus: "CG-DRAFT",
+                publishDate: "2023-06-20",
+                group: "sync-media-pub",
+                editors: [{
+                    name: "Marisa DeMeglio",
+                    company: "DAISY Consortium",
+                    companyURL: "https://www.daisy.org",
+                    w3cid: 35713
+                }, {
+                    name: "Lars Wallin",
+                    company: "Colibrio AB",
+                    companyURL: "https://colibrio.com"
+                }],
+                edDraftURI: "https://w3c.github.io/sync-media-pub/sync-media.html",
+                shortName: "sync-media-pub",
+                noRecTrack: true,
+                copyrightStart: "2019",
+                includePermalinks: true,
+                permalinkEdge: true,
+                permalinkHide: false,
+                diffTool: "http://www.aptest.com/standards/htmldiff/htmldiff.pl",
+                github: {
+                    repoURL: "https://github.com/w3c/sync-media-pub",
+                    branch: "master"
+                },
+                localBiblio: {},
+                xref: "web-platform"
+            };
+        </script></head>
+    <body><section id="abstract"><h2>摘要</h2>
+    <p>這份規格定義呈現同步媒體的 XML 格式 SyncMedia。所謂的呈現是指在將不同種類的媒體，精心安排在時間軸上。理解 SyncMedia 的播放器，會把 SyncMedia 的呈現結果提供給用戶。</p>    
+</section>
+<section id=><h2>本文件的狀態</h2>
+    <p>
+
+        這份規格是由<a href="https://www.w3.org/groups/cg/sync-media-pub">供出版品用的多媒體社群小組</a>發佈。並非 W3C 發佈的標準，或是在成為 W3C 標準的路上。
+        
+              請注意在
+              <a href="https://www.w3.org/community/about/agreements/cla/">W3C 社群貢獻者版權協議</a>的規範下，僅適用有限的選擇退出和其他條件。
+    
+        更多資訊請參考
+        <a href="https://www.w3.org/community/">W3C 社群與商業小組</a>。
+      </p>
+</section>
+<section><h2>適用性</h2>
+    <p>本規格中被標註為非規範性的章節，以及所有製作準則、圖表、範例以及注意事項都為非規範性。本規格其他部分皆為規範性。</p>
+			
+			<p>關鍵字：<b class="rfc2119">可以（MAY）</b>、< class="rfc2119">必須（MUST）</>、<b class="rfc2119">不得（MUST NOT）</b>、< class="rfc2119">推薦（RECOMMENDED）</>、< class="rfc2119">應該（SHOULD）</>在本文件中以如上粗體格式出現時，<a href="https://datatracker.ietf.org/doc/html/bcp14">BCP 14</a>[<cite><a class="bibref" data-link-type="biblio" href="#bib-rfc2119" title="Key words for use in RFCs to Indicate Requirement Levels">RFC2119</a></cite>] [<cite><a class="bibref" data-link-type="biblio" href="#bib-rfc8174" title="Ambiguity of Uppercase vs Lowercase in RFC 2119 Key Words">RFC8174</a></cite>] 中的敘述解釋。</p>
+</section>
+<section id="relationship-to-other-specifications">
+<h2>與其他規格的關係</h2>
+<p><a href="https://www.w3.org/publishing/epub32/epub-mediaoverlays.html">SyncMedia 是從EPUB3 媒體層疊</a>進化而來，也同樣奠基於[[SMIL3]]。跟媒體層疊相比，SyncMedia將更多的SMIL概念納入其中，也可包含客製的功能。</p>
+<p>對於 SyncMedia 與 SMIL3 和 EPUB 媒體層疊更詳細的比較結果，可以參考<a href="explainer.html#relationship-to-smil3-and-epub-media-overlays">SyncMedia 解釋</a>。</p>
+</section>
+<section id="syncmedia">
+<h2>SyncMedia</h2>
+<p>SyncMedia 是設計給同步媒體呈現的 XML 格式。它使用 [[SMIL3]]的一個子集，也定義其特有的客製功能。SyncMedia 檔案的副檔名是<code>.sync</code>。</p>
+<p>SyncMedia 的預設命名空間跟 SMIL 相同：<code>http://www.w3.org/ns/SMIL</code>。</p>
+<p>SyncMedia 的客製功能則使用 SyncMedia 的命名空間：<code>https://w3.github.io/sync-media-pub</code>。</p>
+<div class="note ">
+<p>這是命名空間連結的佔位符；請參考<a href="https://github.com/w3c/sync-media-pub/issues/36">問題36</a>。</p>
+</div>
+<p>這個部分定義 SyncMedia 的元素和屬性，並提供範例。</p>
+<section id="definitions">
+<h3>定義</h3>
+<dl>
+<dt><dfn id="dfn-media-object" data-dfn-type="dfn">媒體物件</dfn></dt>
+<dd>在[=同步媒體文件=]中的媒體來源。</dd>
+<dt><dfn id="dfn-media-parameters" data-dfn-type="dfn">媒體參數</dfn></dt>
+<dd>與 [=媒體物件處理器=] 溝通選項的已命名參數。</dd>
+<dt><dfn id="dfn-media-object-renderer" data-dfn-type="dfn">媒體物件處理器</dfn></dt>
+<dd>[=同步媒體播放器=]用來處理 [=媒體物件=]的元件。不同的媒體種類，可能必須使用不同的處理器</dd>
+<dt><dfn id="dfn-parallel-time-container" data-dfn-type="dfn">同步時間容器</dfn></dt>
+<dd>這個[=時間容器=]中的附屬項目會同步處理。</dd>
+<dt><dfn id="dfn-role" data-dfn-type="dfn">角色</dfn></dt>
+<dd>提供項目的結構語意</dd>
+<dt><dfn id="dfn-sequential-time-container" data-dfn-type="dfn">序列時間容器</dfn></dt>
+<dd>這個[=時間容器=]的附屬項目會依序處理</dd>
+<dt><dfn id="dfn-sync-media-document" data-dfn-type="dfn">同步媒體文件</dfn></dt>
+<dd>文件內包含 SyncMedia 的呈現方式。</dd>
+<dt><dfn id="dfn-sync-media-player" data-dfn-type="dfn">同步媒體播放器</dfn></dt>
+<dd>知道如何執行和播放的[=同步媒體文件=]的使用者代理。</dd>
+<dt><dfn id="dfn-time-container">時間容器</dfn></dt>
+<dd>這個容器規定附屬項目的播放順序。</dd>
+<dt><dfn id="dfn-track">軌道</dfn></dt>
+<dd>這個組織性概念，為媒體物件定義出一個有意義的虛擬處理空間，與視覺排版無關，且帶有預設屬性。</dd>
+</dl>
+</section>
+<section id="document-structure">
+<h3>文件結構</h3>
+<p>所有 SyncMedia 文件都<b>必須</b>以<code>smil</code>作為根元素。</p>
+<p>SyncMedia 文件包含兩個部分<code>head</code>和<code>body</code>。head 部分包含後設資料和軌道資訊。媒體物件的在時間軸上呈現方式則放置在 body 部分。時間容器可以被用來同時或依序處理媒體。</p>
+<p>SyncMedia 文件<b>必須</b>有<code>body</code>部分。但它<b>可能</b>有<code>head</code>部分。</p>
+<table>
+<thead>
+<tr>
+<th>元素</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code id="smil">smil</code></td>
+<td>根元素</td>
+</tr>
+<tr>
+<td><code id="head">head</code></td>
+<td>與時間軸上的呈現無關的資訊</td>
+</tr>
+<tr>
+<td><code id="body">body</code></td>
+<td>用來呈現的主要[=序列時間容器=]。</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="time-containers">
+<h3>時間容器</h3>
+<p>媒體物件的處理順序——同時（同步）處理或者——（依照時序）處理——會由時間容器決定。時間容器<b>可以</b>存在於其他時間容器的巢狀結構中（但<b>絕非</b>以巢狀存在媒體物件中）。</p>
+<table>
+<thead>
+<tr>
+<th>元素</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code id="seq">seq</code></td>
+<td>給媒體和（或）時間容器使用的 [=序列時間容器=] 。</td>
+</tr>
+<tr>
+<td><code id="par">par</code></td>
+<td>給媒體和（或）時間容器使用的 [=同步時間容器=]。</td>
+</tr>
+</tbody>
+</table>
+<pre class="example" title="使用時間容器連結參照文字和音訊片段，即可獲得文字音訊同步的呈現結果。">&lt;smil xmlns=&quot;http://www.w3.org/ns/SMIL&quot;> &lt;body> &lt;par> &lt;audio src=&quot;chapter01.mp3&quot; clipBegin=&quot;30&quot; clipEnd=&quot;40&quot;/> &lt;text src=&quot;chapter01.html#heading_01&quot;/> &lt;/par> &lt;par> &lt;audio src=&quot;chapter01.mp3&quot; clipBegin=&quot;40&quot; clipEnd=&quot;50&quot;/> &lt;text src=&quot;chapter01.html#para_01&quot;/> &lt;/par> &lt;par> &lt;audio src=&quot;chapter01.mp3&quot; clipBegin=&quot;50&quot; clipEnd=&quot;60&quot;/> &lt;text src=&quot;chapter01.html#para_02&quot;/> &lt;/par> &lt;/body> &lt;/smil></pre>
+<section id="structural-semantics">
+<h4>結構語意</h4>
+<p>結構語意<b>可以</b>透過<a href="#sync:role"><code>sync:role</code></a>屬性加入時間容器之中。屬性內的值<b>必須</b>來自<a href="https://www.w3.org/TR/wai-aria/#document_structure_roles">WAI-ARIA 文件的結構</a>或<a href="https://www.w3.org/TR/dpub-aria-1.0/">DPUB-ARIA</a>。</p>
+<section class="informative">
+<h5>結構語意的好處</h5>
+<p>在 SyncMedia 的時間容器中加入結構語意有許多好處。理解語意角色值的使用者代理<b>可以</b>為使用者提供客製化體驗，譬如能夠跳過某些會干擾旁白流暢度的次要內容類型（像是通常加入文件中替紙本和數位版本提供參照點的頁碼宣告。）
+</p>
+</section>
+</section>
+<section id="attributes">
+<h4>屬性</h4>
+<table>
+<thead>
+<tr>
+<th>屬性</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code id="sync:role">sync:role</code></td>
+<td>單一或多個語意角色。</td>
+</tr>
+</tbody>
+</table>
+<div class="TODO">
+<p><strong>待辦事項</strong>
+ <a href="https://github.com/w3c/sync-media-pub/issues/12">問題12</a></p>
+</div>
+<pre class="example" title="用角色去標示頁碼">&lt;smil xmlns=&quot;http://www.w3.org/ns/SMIL&quot; sync:xmlns=&quot;https://w3.github.io/sync-media-pub&quot;> &lt;body> &lt;par> &lt;audio src=&quot;chapter01.mp3&quot; clipBegin=&quot;50&quot; clipEnd=&quot;60&quot;/> &lt;text src=&quot;chapter01.html#para_02&quot;/> &lt;/par> &lt;par sync:role=&quot;doc-pagebreak&quot;> &lt;audio src=&quot;chapter01.mp3&quot; clipBegin=&quot;60&quot; clipEnd=&quot;62&quot;/> &lt;text src=&quot;chapter01.html#pg_04&quot;/> &lt;/par> &lt;par> &lt;audio src=&quot;chapter01.mp3&quot; clipBegin=&quot;62&quot; clipEnd=&quot;70&quot;/> &lt;text src=&quot;chapter01.html#para_03&quot;/> &lt;/par> &lt;/body> &lt;/smil></pre>
+</section>
+</section>
+<section id="media-objects">
+<h3>媒體物件</h3>
+<p>媒體資源會以媒體物件的形式含在 SyncMedia 當中。媒體資源的實際位置是外部檔案、（或者也很常見的）是檔案的一個片段，像是一小段的音訊或影片、或者一部分的 HTML 文件。</p>
+<p>下方表格描述 SyncMedia 中的各種媒體物件。<code>Ref</code>可以被用來代表各種媒體，但作者群通常偏好使用媒體類型專屬的同義詞。</p>
+<table>
+<thead>
+<tr>
+<th>元素</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code id="audio">audio</code></td>
+<td>音訊媒體的參照位置</td>
+</tr>
+<tr>
+<td><code id="image">image</code></td>
+<td>圖像媒體的參照位置</td>
+</tr>
+<tr>
+<td><code id="ref">ref</code></td>
+<td>通用的媒體參照位置</td>
+</tr>
+<tr>
+<td><code id="text">text</code></td>
+<td>外部純文字檔案內容的參照位置</td>
+</tr>
+<tr>
+<td><code id="video">video</code></td>
+<td>影像媒體的參照位置</td>
+</tr>
+</tbody>
+</table>
+<section id="attributes-2">
+<h4>屬性</h4>
+<p>媒體物件的屬性是用來：</p>
+<ul>
+<li>表示媒體資源（包含片段在內）的位置</li>
+<li>將媒體物件分派給[=軌道=]</li>
+<li>指出某個重複使用的媒體物件。</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>屬性</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code id="clipBegin">clipBegin</code></td>
+<td>跟 SMIL3 中的<a data-cite="SMIl3/smil30.html#smil-extended-media-object-adef-clipBegin">clipBegin</a>一樣，是某個時基媒體片段的開始。</td>
+</tr>
+<tr>
+<td><code id="clipEnd">clipEnd</code></td>
+<td>跟 SMIL3 中的<a data-cite="SMIl3/smil30.html#smil-extended-media-object-adef-clipEnd">clipEnd</a>一樣，是某個時基媒體片段的結束。</td>
+</tr>
+<tr>
+<td><code id="panZoom">panZoom</code></td>
+<td>跟 SMIL3 中的<a data-cite="SMIL3/smil30.html#smil-extended-media-object-adef-panZoom">panZoom</a>一樣，是媒體物件中的某個矩形部分。</td>
+</tr>
+<tr>
+<td><code id="repeatCount">repeatCount</code></td>
+<td>標示出某個時基媒體物件的重複次數。跟 SMIL3 中的<a data-cite="SMIL3/smil-timing.html#adef-repeatCount">repeatCount</a>一樣，值是個數字，或者「indefinite」（無限期）。</td>
+</tr>
+<tr>
+<td><code id="src">src</code></td>
+<td>媒體檔案的網址，可以選擇包含[[媒體斷片]]。</td>
+</tr>
+<tr>
+<td><code id="sync:trackref">sync:track</code></td>
+<td><code>sync:track</code>元素的編號。</td>
+</tr>
+</tbody>
+</table>
+<div class="note ">
+<p>EPUB媒體層疊的<a href="https://www.w3.org/publishing/epub/epub-mediaoverlays.html#app-clock-examples">時間值</a>被認定是有效的片段開頭及結尾值，因為<a href="https://www.w3.org/TR/SMIL/smil-extended-media-object.html#smilMediaNS-MediaClipping">SMIL MediaClipping Module</a>表示如果若文件沒有給定單位的說明符，就會假設使用普通播放時間（<code>npt</code>）而非<code>smpte</code>。</p>
+</div>
+<p>如果媒體片段的<code>src</code>，以及<code>clipBegin</code>或<code>clipEnd</code>屬性同時存在，就必須依照<a href="https://www.w3.org/TR/media-frags/#media-fragment-clients">All Media Fragment Clients</a>的定義，根據媒體斷片的偏移量對資源進行剪輯。</p>
+<div class="note ">
+<p>在參照檔案較大的媒體時，我們「推薦」使用搭配 <code>src</code> 的媒體片段；當定義精心安排的片段時，則<b>推薦</b>使用<code>clipBegin</code>和<code>clipEnd</code>屬性。這般推薦的目的是將客戶端檢索資源的需求（可能是靠向伺服器發出統一資源識別完成）與定位資源片段的需求（靠著參照<a href="https://www.w3.org/TR/media-frags/#valid-uri-temporal">媒體片段的開頭與結束點）</a>分開。否則，當用戶端在逐一獲取各個片段時，就得使用複雜的暫存機制將片段間的小問題移除，以提供順暢的播放體驗。<code></code></p>
+</div>
+</section>
+<section id="embedded-media">
+<h4>嵌入媒體</h4>
+<p>嵌入媒體（如 HTM L文件中的影片）<b>可以</b>透過搭配其嵌入文件的網址及網址的方式來參照。</p>
+<p>因此，[=媒體物件處理器=]<b>應該</b>支援基於選擇器開啟 HTML 文件及解參照內容的功能。</p>
+<pre class="example" title="引用位在HTML文件裡的影音媒體">&lt;par> &lt;text src=&quot;doc.html#para1&quot;/> &lt;video src=&quot;doc.html#video1&quot; clipBegin=&quot;0&quot; clipEnd=&quot;10&quot;/> &lt;/par></pre>
+</section>
+<section id="parameters">
+<h4>指標</h4>
+<p>SyncMedia 使用 SMIL3 的<a data-cite="SMIL3/smil30.html#smil-extended-media-object-edef-param">param</a>將指標傳入[=媒體物件處理器=]</p>
+<table>
+<thead>
+<tr>
+<th>元素</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code id="param">param</code></td>
+<td>媒體物件處理指標</td>
+</tr>
+</tbody>
+</table>
+<p><code>param</code>的屬性有：</p>
+<table>
+<thead>
+<tr>
+<th>屬性</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code id="name">名稱</code></td>
+<td>指標名稱</td>
+</tr>
+<tr>
+<td><code id="value">值</code></td>
+<td>指標的值</td>
+</tr>
+</tbody>
+</table>
+<p>以下指標<code>名稱</code>有明確定義的值：</p>
+<table>
+<thead>
+<tr>
+<th>名稱</th>
+<th>允許的值</th>
+<th>描述</th>
+<th>給哪（幾）種媒體物件</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>cssClass</code></td>
+<td>一或多個字串</td>
+<td>指定使用哪些類別的名稱</td>
+<td>媒體可以用 CSS 加上樣式</td>
+</tr>
+<tr>
+<td><code>clipPath</code></td>
+<td>就跟<a href="https://www.w3.org/TR/SVG11/paths.html#DAttribute">SVG 路徑資料屬性的定義一樣。</a></td>
+<td>這個圖形被用來為媒體加上剪裁遮色片。</td>
+<td>視覺媒體</td>
+</tr>
+<tr>
+<td><code>pan</code></td>
+<td>介於 -1（完全靠左）跟1（完全靠右）之間</td>
+<td>標示出向左或向右橫搖。</td>
+<td>音訊媒體</td>
+</tr>
+<tr>
+<td><code>playbackRate</code></td>
+<td>1.0（正常速度）、更慢或更快</td>
+<td>標示播放的速率值<b>應該</b>與 HTML 的{{HTMLMediaElement/playbackRate}}一致。</td>
+<td>時基媒體</td>
+</tr>
+<tr>
+<td><code>音量</code></td>
+<td>介於 0 和 1 之間。</td>
+<td>標示音量</td>
+<td>有聲媒體</td>
+</tr>
+</tbody>
+</table>
+<div class="note ">
+<p><code>clipPath</code>使用 SVG 的路徑定義來規定剪輯的路徑。這個剪輯行為會套用在它所定義的媒體物件的可視範圍內。在與<code>panZoom</code>同時使用時，<code>clipPath</code><b>應該</b>被應用在由<code>panZoom</code>屬性限定的矩形之中。</p>
+</div>
+<pre class="example" title="使用 param 為 HTML 元素加入同步的顯著性">&lt;smil xmlns=&quot;http://www.w3.org/ns/SMIL&quot;> &lt;body> &lt;par> &lt;audio src=&quot;chapter01.mp3&quot; clipBegin=&quot;30&quot; clipEnd=&quot;40&quot;/> &lt;text src=&quot;chapter01.html#heading_01&quot;> &lt;param name=&quot;cssClass&quot; value=&quot;highlight&quot;/> &lt;/text> &lt;/par> &lt;par> &lt;audio src=&quot;chapter01.mp3&quot; clipBegin=&quot;40&quot; clipEnd=&quot;50&quot;/> &lt;text src=&quot;chapter01.html#para_01&quot;> &lt;param name=&quot;cssClass&quot; value=&quot;highlight&quot;/> &lt;/text> &lt;/par> &lt;par> &lt;audio src=&quot;chapter01.mp3&quot; clipBegin=&quot;50&quot; clipEnd=&quot;60&quot;/> &lt;text src=&quot;chapter01.html#para_02&quot;> &lt;param name=&quot;cssClass&quot; value=&quot;highlight&quot;/> &lt;/text> &lt;/par> &lt;/body> &lt;/smil></pre>
+</section>
+</section>
+<section id="tracks">
+<h3>軌道</h3>
+<p>這個 SyncMedia 的呈現方式，會將同種類的媒體物件統整入一個名為「軌道」的虛擬空間。軌道<b>必須</b>被放在 SyncMedia 文件的<code>head</code>。軌道具備許多有用的功能：</p>
+<ol>
+<li>軌道<b>可以</b>提供預設的<a href="#param">params</a>，並可應用在軌道中的任何媒體物件上。</li>
+<li>軌道<b>可以</b>有特定的媒體物件類型，<b>可以</b>將軌道設為預設值。（譬如所有的<code>音訊</code>媒體物件，可以被自動分配到軌道中）。</li>
+<li>軌道<b>可以</b>有個供所有媒體物件使用的預設來源，並搭配媒體物件本身的片段說明符使用。</li>
+</ol>
+<p>上述功能能夠減少繁瑣的作業，要不然每個媒體物件都需要逐一明確定義這些屬性。</p>
+<table>
+<thead>
+<tr>
+<th>元素</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code id="sync:track">sync:track</code></td>
+<td>[=媒體物件=]被指派的虛擬空間。使用者代理<b>可以</b>以單曲為單位介入控制。（譬如調整旁白軌道的音量）。<code>sync:track</code><b>可以</b>有 [=媒體參數=]，這會成為軌道上 [=媒體物件=]的預設值。</td>
+</tr>
+</tbody>
+</table>
+<section id="attributes-3">
+<h4>屬性</h4>
+<table>
+<thead>
+<tr>
+<th>屬性</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code id="sync:label">sync:label</code></td>
+<td>軌道的標籤</td>
+</tr>
+<tr>
+<td><code id="sync:defaultSrc">sync:defaultSrc</code></td>
+<td>這個軌道上的媒體檔案會使用的檔案的預設網址。</td>
+</tr>
+<tr>
+<td><code id="sync:defaultFor">sync:defaultFor</code></td>
+<td>指定類型的媒體物件（<code>音訊</code>、<code>圖片</code>、<code>影像</code>、<code>文字</code>、<code>引用</code>之一）會自動被分配到這個軌道。</td>
+</tr>
+<tr>
+<td><code id="sync:trackType">sync:trackType</code></td>
+<td>指示這軌道會以哪種方式呈現。</td>
+</tr>
+</tbody>
+</table>
+<div class="TODO">
+<p><strong>待辦事項</strong>：
+ 
+ <a href="https://github.com/w3c/sync-media-pub/issues/31">問題31</a></p>
+</div>
+<pre class="example" title="用於 HTML 文件、帶有預設值和 cssClass param 的軌道。">&lt;smil xmlns=&quot;http://www.w3.org/ns/SMIL&quot; sync:xmlns=&quot;https://w3.github.io/sync-media-pub&quot;> &lt;head> &lt;sync:track sync:label=&quot;Page&quot; sync:defaultFor=&quot;text&quot; sync:defaultSrc=&quot;chapter01.html&quot; sync:trackType=&quot;contentDocument&quot;> &lt;param name=&quot;cssClass&quot; value=&quot;highlight&quot;/> &lt;/sync:track> &lt;/head> &lt;body> &lt;par> &lt;audio src=&quot;chapter01.mp3&quot; clipBegin=&quot;30&quot; clipEnd=&quot;40&quot;/> &lt;text src=&quot;#heading_01&quot;/> &lt;/par> &lt;par> &lt;audio src=&quot;chapter01.mp3&quot; clipBegin=&quot;40&quot; clipEnd=&quot;50&quot;/> &lt;text src=&quot;#para_01&quot;/> &lt;/par> &lt;par> &lt;audio src=&quot;chapter01.mp3&quot; clipEnd=&quot;50&quot; clipEnd=&quot;60&quot;/> &lt;text src=&quot;#para_02&quot;/> &lt;/par> &lt;/body> &lt;/smil></pre>
+<pre class="example" title="兩個音訊軌道：一個用於旁白（音訊媒體物件的預設軌道），一個用於背景音樂。">&lt;smil xmlns=&quot;http://www.w3.org/ns/SMIL&quot; sync:xmlns=&quot;https://w3.github.io/sync-media-pub&quot;> &lt;head> &lt;sync:track id=&quot;background-music&quot; sync:trackType=&quot;backgroundAudio&quot;> &lt;param name=&quot;volume&quot; value=&quot;0.5&quot;/> &lt;/sync:track> &lt;sync:track sync:label=&quot;Narration&quot; sync:defaultFor=&quot;audio&quot; sync:trackType=&quot;audioNarration&quot;/> &lt;sync:track sync:label=&quot;Page&quot; sync:defaultFor=&quot;text&quot; sync:trackType=&quot;contentDocument&quot;> &lt;param name=&quot;cssClass&quot; value=&quot;highlight&quot;/> &lt;/sync:track> &lt;/head> &lt;body> &lt;par> &lt;audio sync:track=&quot;background-music&quot; src=&quot;bkmusic.mp3&quot; repeat=&quot;indefinite&quot;/> &lt;seq> &lt;par> &lt;audio src=&quot;chapter01.mp3&quot; clipBegin=&quot;30&quot; clipEnd=&quot;40&quot;/> &lt;text src=&quot;chapter01.html#heading_01&quot;/> &lt;/par> &lt;par> &lt;audio src=&quot;chapter01.mp3&quot; clipBegin=&quot;40&quot; clipEnd=&quot;50&quot;/> &lt;text src=&quot;chapter01.html#para_01&quot;/> &lt;/par> &lt;par> &lt;audio src=&quot;chapter01.mp3&quot; clipEnd=&quot;50&quot; clipEnd=&quot;60&quot;/> &lt;text src=&quot;chapter01.html#para_02&quot;/> &lt;/par> &lt;/seq> &lt;/par> &lt;/body> &lt;/smil></pre>
+<p class="note">雖然沒有提供預設值，但之所以要加入旁白<code>sync:track</code>是因為這讓使用者代理能分別調整旁白音訊和背景音樂音訊。</p>
+</section>
+</section>
+<section id="metadata">
+<h3>後設資料</h3>
+<p>SyncMedia 有納入後設資料的原生機制，但沒有事先定義任何的後設資料後設資料<b>必須</b>放在 SyncMedia 文件的<code>head</code>。</p>
+<table>
+<thead>
+<tr>
+<th>元素</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code id="metadata">metadata</code></td>
+<td>這個延伸點允許用來包含來自任何後設資訊結構語言的後設資料。</td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+<section id="playback">
+<h2>播放</h2>
+<section id="processing">
+<h3>處理</h3>
+<section id="applying-track-values-to-media-objects">
+<h4>能將軌道值應用到媒體物件中</h4>
+<p>[=軌道=]<b>可以</b>為 [=媒體物件=]提供預設值。這個段落提供應用這些值的規則</p>
+<table>
+<thead>
+<tr>
+<th>軌道屬性</th>
+<th>對媒體物件的影響</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>sync:defaultSrc</code></td>
+<td>為媒體物件提供<code>src</code>屬性。如果媒體物件的<code>src</code>單純只是選擇器，那麼這選擇器就會被附加到軌道的<code>sync:defaultSrc</code>之上。媒體物件的<code>src</code>的任何值，都會覆蓋掉軌道的<code>sync:defaultSrc</code>。</td>
+</tr>
+</tbody>
+</table>
+<p>此外，為任一軌道制定的 [=媒體參數=]，會被隸屬該軌道的任何媒體物件繼承。例外情況是當媒體物件本身提供相同<code>名稱</code>的指標，此時媒體物件指標的<code>值</code>會覆蓋掉軌道指標的<code>值</code>。</p>
+</section>
+</section>
+<section id="rendering">
+<h3>處理</h3>
+<p>SyncMedia 文件經讀取後，就準備好被處理。</p>
+<table>
+<thead>
+<tr>
+<th>元素</th>
+<th>處理行為</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>body</code></td>
+<td>像<code>seq</code>一樣被處理</td>
+</tr>
+<tr>
+<td><code>seq</code></td>
+<td>所有的子項目會依序處理，當前者結束後，後者就會開始處理。當最後一個子項目結束後即告終結。</td>
+</tr>
+<tr>
+<td><code>par</code></td>
+<td>同時處理子項目。當所有子項目結束後即告終結。</td>
+</tr>
+<tr>
+<td><code>audio</code></td>
+<td>播放所參照的音訊檔案片段，並將<code>params</code>用於其上。當參照的片段結束即告終結。</td>
+</tr>
+<tr>
+<td><code>圖片</code></td>
+<td>讀取圖片檔案或部分圖片，並將<code>params</code>用於其上。非時基，所以被認為會即刻結束。</td>
+</tr>
+<tr>
+<td><code>ref</code></td>
+<td>會推論媒體類型，如果是支援的種類的話，就會處理檔案和片段，並將<code>params</code>用於其上。如果是時基的類型，其終結就是片段結束；若為非時基的類型，就會即刻結束。</td>
+</tr>
+<tr>
+<td><code>text</code></td>
+<td>顯示 HTML 文件，確保參照的元素可視，並將<code>params</code>用於其上。非時基，所以被認為會即刻結束。</td>
+</tr>
+<tr>
+<td><code>video</code></td>
+<td>播放影片檔案或片段，並將<code>params</code>用於其上。當片段終結即告終結。</td>
+</tr>
+</tbody>
+</table>
+<p class="note">關於使用<code>repeatCount</code>的媒體，以及其何時被認定終結的備註。</p>
+</section>
+<section id="user-interaction">
+<h3>用戶的互動行為</h3>
+<div class="TODO">
+<p><strong>待辦事項</strong>：要涵蓋多大的範圍？</p>
+</div>
+<ul>
+<li>有意義地貫穿整個呈現過程，例如上一／下一個句子或段落。</li>
+<li>為多軌的呈現方式提供控制。</li>
+<li>關於全域調整和軌道類型（由<code>trackType</code>所指示）兩者間可能不合情理（譬如加快呈現過程，但沒有加快背景音樂）的備註。</li>
+</ul>
+</section>
+</section>
+<section id="xml">
+<h2>XML</h2>
+<section id="additional-attributes">
+<h3>附加屬性</h3>
+<p>除了上述所列的屬性外，這個段落還加入下列的標準XML屬性：</p>
+<table>
+<thead>
+<tr>
+<th>屬性</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code id="xml:base">xml:base</code></td>
+<td>文件根位址，如[[XMLBASE]]所定義。</td>
+</tr>
+<tr>
+<td><code id="xml:id">xml:id</code></td>
+<td>某元素的唯一識別字串，如[[XML-ID]]所定義。</td>
+</tr>
+<tr>
+<td><code id="xml:lang">xml:lang</code></td>
+<td>語言識別字串，如[[XML]]所定義</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="content-model">
+<h3>內容模型</h3>
+<p>這是給 SyncMedia 的XML 內容模型。會明確指出必須的元素和屬性</p>
+<table summary="SyncMedia 的XML 內容模型">
+    <thead><tr><th>元素</th><th>屬性</th><th>內容</th></tr></thead>
+    <tbody>
+        <tr>
+            <td><a href="#smil">`smil`</a><span class="deemph">（必須）</span></td>
+            <td>
+                <ul>
+                    <li><a href="#xml:base">`xml:base`</a></li>
+                    <li><a href="#xml:id">`xml:id`</a></li>
+                    <li><a href="#xml:lang">`xml:lang`</a></li>
+                </ul>
+            </td>
+            <td>需依照這個順序：<ul>
+                    <li><a href="#head">`head`</a>（0或1）</li>
+                    <li><a href="#body">`body`</a>（絕對是1）</li>
+                </ul>
+            </td>
+        </tr>
+        <tr>
+            <td><a href="#head">`head`</a></td>
+            <td>
+                <ul>
+                    <li><a href="#xml:id">`xml:id`</a></li>
+                    <li><a href="#xml:lang">`xml:lang`</a></li>
+                </ul>
+            </td>
+            <td>可任意順序：<ul>
+                    <li><a href="#metadata">`metadata`</a>（0個或是多個）</li>
+                    <li><a href="#sync:track">`sync:track`</a>（0個或是多個）</li>
+                </ul>
+            </td>
+        </tr>
+        <tr>
+            <td><a href="#metadata">`metadata`</a></td>
+            <td>
+                <ul>
+                    <li><a href="#xml:id">`xml:id`</a></li>
+                    <li><a href="#xml:lang">`xml:lang`</a></li>
+                </ul>
+            </td>
+            <td>來自任何命名空間的零個或多個元素</td>
+        </tr>
+        <tr>
+            <td><a href="#sync:track">`sync:track`</a></td>
+            <td>
+                <ul>
+                    <li><a href="#sync:label">`sync:label`</a><span class="deemph">（必須）</span></li>
+                    <li><a href="#sync:defaultSrc">`sync:defaultSrc`</a></li>
+                    <li><a href="#sync:defaultFor">`sync:defaultFor`</a></li>
+                    <li><a href="#sync:trackType">`sync:trackType`</a></li>
+                    <li><a href="#xml:id">`xml:id`</a></li>
+                    <li><a href="#xml:lang">`xml:lang`</a></li>
+                </ul>
+            </td>
+            <td>
+                <ul>
+                    <li><a href="#param">`param`</a>（0個或多個）</li>
+                </ul>
+            </td>
+        </tr>
+        <tr>
+            <td><a href="#param">`param`</a></td>
+            <td>
+                <ul>
+                    <li><a href="#name">`name`</a><span class="deemph">（必須）</span></li>
+                    <li><a href="#value">`value`</a><span class="deemph">（必須）</span></li>
+                    <li><a href="#xml:id">`xml:id`</a></li>
+                    <li><a href="#xml:lang">`xml:lang`</a></li>
+                </ul>
+            </td>
+            <td>空</td>
+        </tr>
+        <tr>
+            <td><a href="#body">`body`</a></td>
+            <td>
+                <ul>
+                    <li><a href="#sync:role">`sync:role`</a></li>
+                    <li><a href="#xml:id">`xml:id`</a></li>
+                    <li><a href="#xml:lang">`xml:lang`</a></li>
+                </ul>
+            </td>
+            <td>可任意順序：<ul>
+                    <li><a href="#audio">`audio`</a>（0個或者多個）</li>
+                    <li><a href="#image">`image`</a>（0個或者多個）</li>
+                    <li><a href="#par">`par`</a>（0個或者多個）</li>
+                    <li><a href="#ref">`ref`</a>（0個或者多個）</li>
+                    <li><a href="#seq">`seq`</a>（0個或者多個）</li>
+                    <li><a href="#text">`text`</a>（0個或者多個）</li>
+                    <li><a href="#video">`video`</a>（0個或者多個）</li>
+                </ul>
+            </td>
+        </tr>
+        <tr>
+            <td><a href="#seq">`seq`</a></td>
+            <td>
+                <ul>
+                    <li><a href="#sync:role">`sync:role`</a></li>
+                    <li><a href="#xml:id">`xml:id`</a></li>
+                    <li><a href="#xml:lang">`xml:lang`</a></li>
+                </ul>
+            </td>
+            <td>可任意順序：<ul>
+                    <li><a href="#audio">`audio`</a>（0個或者多個）</li>
+                    <li><a href="#image">`image`</a>（0個或者多個）</li>
+                    <li><a href="#par">`par`</a>（0個或者多個）</li>
+                    <li><a href="#ref">`ref`</a>（0個或者多個）</li>
+                    <li><a href="#seq">`seq`</a>（0個或者多個）</li>
+                    <li><a href="#text">`text`</a>（0個或者多個）</li>
+                    <li><a href="#video">`video`</a>（0個或者多個）</li>
+                </ul>
+            </td>
+        </tr>
+        <tr>
+            <td><a href="#par">`par`</a></td>
+            <td>
+                <ul>
+                    <li><a href="#sync:role">`sync:role`</a></li>
+                    <li><a href="#xml:id">`xml:id`</a></li>
+                    <li><a href="#xml:lang">`xml:lang`</a></li>
+                </ul>
+            </td>
+            <td>可任意順序：<ul>
+                    <li><a href="#audio">`audio`</a>（0個或者多個）</li>
+                    <li><a href="#image">`image`</a>（0個或者多個）</li>
+                    <li><a href="#par">`par`</a>（0個或者多個）</li>
+                    <li><a href="#ref">`ref`</a>（0個或者多個）</li>
+                    <li><a href="#seq">`seq`</a>（0個或者多個）</li>
+                    <li><a href="#text">`text`</a>（0個或者多個）</li>
+                    <li><a href="#video">`video`</a>（0個或者多個）</li>
+                </ul>
+            </td>
+        </tr>
+        <tr>
+            <td><a href="#audio">`audio`</a></td>
+            <td>
+                <ul>
+                    <li><a href="#clipBegin">`clipBegin`</a></li>
+                    <li><a href="#clipEnd">`clipEnd`</a></li>
+                    <li><a href="#repeatCount">`repeatCount`</a></li>
+                    <li><a href="#src">`src`</a><span class="deemph">（必須）</span></li>
+                    <li><a href="#sync:trackref">`sync:track`</a></li>
+                    <li><a href="#xml:id">`xml:id`</a></li>
+                    <li><a href="#xml:lang">`xml:lang`</a></li>
+                </ul>
+            </td>
+            <td>
+                <ul>
+                    <li><a href="#param">`param`</a>（0或多個）</li>
+                </ul>
+            </td>
+        </tr>
+        <tr>
+            <td><a href="#image">`image`</a></td>
+            <td>
+                <ul>
+                    <li><a href="#src">`src`</a> <span class="deemph">（必須）</span></li>
+                    <li><a href="#sync:trackref">`sync:track`</a></li>
+                    <li><a href="#panZoom">`panZoom`</a></li>
+                    <li><a href="#xml:id">`xml:id`</a></li>
+                    <li><a href="#xml:lang">`xml:lang`</a></li>
+                </ul>
+            </td>
+            <td>
+                <ul>
+                    <li><a href="#param">`param`</a>（0或多個）</li>
+                </ul>
+            </td>
+        </tr>
+        <tr>
+            <td><a href="#ref">`ref`</a></td>
+            <td>
+                <ul>
+                    <li><a href="#clipBegin">`clipBegin`</a></li>
+                    <li><a href="#clipEnd">`clipEnd`</a></li>
+                    <li><a href="#panZoom">`panZoom`</a></li>
+                    <li><a href="#repeatCount">`repeatCount`</a></li>
+                    <li><a href="#src">`src`</a><span class="deemph">（必須）</span></li>
+                    <li><a href="#sync:trackref">`sync:track`</a></li>
+                    <li><a href="#xml:id">`xml:id`</a></li>
+                    <li><a href="#xml:lang">`xml:lang`</a></li>
+                </ul>
+            </td>
+            <td>
+                <ul>
+                    <li><a href="#param">`param`</a>（0或多個）</li>
+                </ul>
+            </td>
+        </tr>
+        <tr>
+            <td><a href="#text">`text`</a></td>
+            <td>
+                <ul>
+                    <li><a href="#src">`src`</a><span class="deemph">（必須）</span></li>
+                    <li><a href="#sync:trackref">`sync:track`</a></li>
+                    <li><a href="#xml:id">`xml:id`</a></li>
+                    <li><a href="#xml:lang">`xml:lang`</a></li>
+                </ul>
+            </td>
+            <td>
+                <ul>
+                    <li><a href="#param">`param`</a>（0或多個）</li>
+                </ul>
+            </td>
+        </tr>
+        <tr>
+            <td><a href="#video">`video`</a></td>
+            <td>
+                <ul>
+                    <li><a href="#clipBegin">`clipBegin`</a></li>
+                    <li><a href="#clipEnd">`clipEnd`</a></li>
+                    <li><a href="#panZoom">`panZoom`</a></li>
+                    <li><a href="#repeatCount">`repeatCount`</a></li>
+                    <li><a href="#src">`src`</a><span class="deemph">（必須）</span></li>
+                    <li><a href="#sync:trackref">`sync:track`</a></li>
+                    <li><a href="#xml:id">`xml:id`</a></li>
+                    <li><a href="#xml:lang">`xml:lang`</a></li>
+                </ul>
+            </td>
+            <td>
+                <ul>
+                    <li><a href="#param">`param`</a>（0或多個）</li>
+                </ul>
+            </td>
+        </tr>
+    </tbody>
+</table>
+</section>
+</section>
+<section class="appendix" id="acknowledgements">
+<h2 class="appendix">致謝</h2>
+<p>在此文件出版的當下，<a href="https://www.w3.org/community/sync-media-pub/">出版品同步媒體社群小組</a>的成員如下：</p>
+<p>Avneesh Singh (DAISY Consortium), Ben Dugas (Rakuten, Inc.), Chris Needham (British Broadcasting Corporation), Daniel Weck (DAISY Consortium), Didier Gehrer, Farrah Little (BC Libraries Cooperative), George Kerscher (DAISY Consortium), Ivan Herman (W3C), James Donaldson, Lars Wallin (Colibrio), Livio Mondini, Lynn McCormack (CAST, Inc), Marisa DeMeglio (DAISY Consortium, chair), Markku Hakkinen (Educational Testing Service), Matt Garrish (DAISY Consortium), Michiel Westerbeek (Tella), Nigel Megitt (British Broadcasting Corporation), Romain Deltour (DAISY Consortium), Wendy Reid (Rakuten, Inc.), Zheng Xu (Rakuten, Inc.)</p>
+
+</section>
+</body>
+</html>
