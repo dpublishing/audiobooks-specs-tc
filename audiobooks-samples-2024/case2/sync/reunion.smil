@@ -1,0 +1,358 @@
+<smil xmlns="http://www.w3.org/ns/SMIL" sync:xmlns="https://w3.github.io/sync-media-pub">
+<smil>
+    <head>
+        <sync:track sync:trackType="contentDocument" sync:defaultSrc="../html/reunion.html" 
+            sync:defaultFor="text" sync:label="Page">
+            <param name="cssClass" value="highlight"/>
+        </sync:track>
+        <sync:track sync:trackType="audioNarration" sync:label="Narration" 
+            sync:defaultSrc="reunion.mp3" sync:defaultFor="audio" />
+    </head>
+        </sync:track>
+    </head>
+    <body>
+        <par>
+            <audio src="#t=0,27"/>
+            <text src="#sen-intro"/>
+        </par>
+        <par>
+            <audio src="#t=28.12,33.17"/>
+            <text src="#sen-quote"/>
+        </par>
+         <par>
+            <audio src="#t=36.08,39.17"/>
+            <text src="#sen-0"/>
+        </par>
+        <par>
+            <audio src="#t=41.14,44.18"/>
+            <text src="#sen-1"/>
+        </par>
+        <par>
+            <audio src="#t=45.14,50.09"/>
+            <text src="#sen-2"/>
+        </par>
+        <par>
+            <audio src="#t=51.10,60.10"/>
+            <text src="#sen-3"/>
+        </par>
+        <par>
+            <audio src="#t=61.15,85.15"/>
+            <text src="#sen-4"/>
+        </par>
+        <par>
+            <audio src="#t=86.24,104.07"/>
+            <text src="#sen-5"/>
+        </par>
+        <par>
+            <audio src="#t=104.08,131.02"/>
+            <text src="#sen-6"/>
+        </par>
+        <par>
+            <audio src="#t=132.10,140.12"/>
+            <text src="#sen-7"/>
+        </par>
+        <par>
+            <audio src="#t=141.08,152.00"/>
+            <text src="#sen-8"/>
+        </par>
+        <par>
+            <audio src="#t=153.02,156.02"/>
+            <text src="#sen-9"/>
+        </par>
+        <par>
+            <audio src="#t=157,189.11"/>
+            <text src="#sen-10"/>
+        </par>
+        <par>
+            <audio src="#t=190.15,193.03"/>
+            <text src="#sen-11"/>
+        </par>
+        <par>
+            <audio src="#t=194.12,201.22"/>
+            <text src="#sen-12"/>
+        </par>
+        <par>
+            <audio src="#t=202.21,213.15"/>
+            <text src="#sen-13"/>
+        </par>
+        <par>
+            <audio src="#t=214.19,221.05"/>
+            <text src="#sen-14"/>
+        </par>
+        <par>
+            <audio src="#t=221.24,229.02"/>
+            <text src="#sen-15"/>
+        </par>
+        <par>
+            <audio src="#t=229.21,244.18"/>
+            <text src="#sen-16"/>
+        <par>
+            <audio src="#t=245.13,265.06"/>
+            <text src="#sen-17"/>
+        </par>
+        <par>
+            <audio src="#t=266.15,268.24"/>
+            <text src="#sen-18"/>
+        </par>
+        <par>
+            <audio src="#t=269.09,275.19"/>
+            <text src="#sen-19"/>
+        </par>
+        <par>
+            <audio src="#t=276.02,280.16"/>
+            <text src="#sen-20"/>
+        </par>
+        <par>
+            <audio src="#t=281.10,293.22"/>
+            <text src="#sen-21"/>
+        </par>
+        <par>
+            <audio src="#t=295.05,301.15"/>
+            <text src="#sen-22"/>
+        </par>
+        <par>
+            <audio src="#t=302.04,319.09"/>
+            <text src="#sen-23"/>
+        </par>
+        <par>
+            <audio src="#t=320.13,324.24"/>
+            <text src="#sen-24"/>
+        </par>
+        <par>
+            <audio src="#t=326.20,340.20"/>
+            <text src="#sen-25"/>
+        </par>
+        <par>
+            <audio src="#t=341.09,360.19"/>
+            <text src="#sen-26"/>
+        </par>
+        <par>
+            <audio src="#t=361.05,389.17"/>
+            <text src="#sen-27"/>
+        </par>
+        <par>
+            <audio src="#t=390.10,403.01"/>
+            <text src="#sen-28"/>
+        </par>
+        <par>
+            <audio src="#t=404.03,408.17"/>
+            <text src="#sen-29"/>
+        </par>
+        <par>
+            <audio src="#t=410.11,412.14"/>
+            <text src="#sen-30"/>
+        </par>
+        <par>
+            <audio src="#t=413.05,418.22"/>
+            <text src="#sen-31"/>
+        </par>
+        <par>
+            <audio src="#t=419.09,433.03"/>
+            <text src="#sen-32"/>
+        </par>
+        <par>
+            <audio src="#t=434,436.17"/>
+            <text src="#sen-33"/>
+        </par>
+        <par>
+            <audio src="#t=438.12,464.23"/>
+            <text src="#sen-34"/>
+        </par>
+        <par>
+            <audio src="#t=466.04,471.10"/>
+            <text src="#sen-35"/>
+        </par>
+        <par>
+            <audio src="#t=473.04,479.18"/>
+            <text src="#sen-36"/>
+        </par>
+        <par>
+            <audio src="#t=480.16,483.21"/>
+            <text src="#sen-37"/>
+        </par>
+        <par>
+            <audio src="#t=484.07,490"/>
+            <text src="#sen-38"/>
+        </par>
+        <par>
+            <audio src="#t=490.17,495.05"/>
+            <text src="#sen-39"/>
+        </par>
+        <par>
+            <audio src="#t=496.14,507.03"/>
+            <text src="#sen-40"/>
+        </par>
+        <par>
+            <audio src="#t=508.05,522.04"/>
+            <text src="#sen-41"/>
+        </par>
+        <par>
+            <audio src="#t=523.08,529.01"/>
+            <text src="#sen-42"/>
+        </par>
+        <par>
+            <audio src="#t=529.03,534.21"/>
+            <text src="#sen-43"/>
+        </par>
+        <par>
+            <audio src="#t=535.22,537.13"/>
+            <text src="#sen-44"/>
+        </par>
+        <par>
+            <audio src="#t=537.14,542.07"/>
+            <text src="#sen-45"/>
+        </par>
+        <par>
+            <audio src="#t=542.24,544.21"/>
+            <text src="#sen-46"/>
+        </par>
+        <par>
+            <audio src="#t=544.22,547.04"/>
+            <text src="#sen-47"/>
+        </par>
+        <par>
+            <audio src="#t=547.22,551.05"/>
+            <text src="#sen-48"/>
+        </par>
+        <par>
+            <audio src="#t=551.09,554.10"/>
+            <text src="#sen-49"/>
+        </par>
+        <par>
+            <audio src="#t=555.08,565.06"/>
+            <text src="#sen-50"/>
+        </par>
+        <par>
+            <audio src="#t=566.15,570.02"/>
+            <text src="#sen-51"/>
+        </par>
+        <par>
+            <audio src="#t=571.06,579.21"/>
+            <text src="#sen-52"/>
+        <par>
+            <audio src="#t=580.06,592.06"/>
+            <text src="#sen-53"/>
+        </par>
+        <par>
+            <audio src="#t=593.18,599.06"/>
+            <text src="#sen-54"/>
+        </par>
+        <par>
+            <audio src="#t=599.11,601.07"/>
+            <text src="#sen-55"/>
+        </par>
+        <par>
+            <audio src="#t=601.10,604.06"/>
+            <text src="#sen-56"/>
+        </par>
+        <par>
+            <audio src="#t=605.07,618.22"/>
+            <text src="#sen-57"/>
+        </par>
+        <par>
+            <audio src="#t=620.06,627.09"/>
+            <text src="#sen-58"/>
+        </par>
+        <par>
+            <audio src="#t=628.19,629.11"/>
+            <text src="#sen-59"/>
+        </par>
+        <par>
+            <audio src="#t=629.12,630.18"/>
+            <text src="#sen-60"/>
+        </par>
+        <par>
+            <audio src="#t=630.19,633"/>
+            <text src="#sen-61"/>
+        </par>
+        <par>
+            <audio src="#t=634.03,640.09"/>
+            <text src="#sen-62"/>
+        </par>
+        <par>
+            <audio src="#t=641.02,644.24"/>
+            <text src="#sen-63"/>
+        </par>
+        <par>
+            <audio src="#t=646.12,651.16"/>
+            <text src="#sen-64"/>
+        </par>
+        <par>
+            <audio src="#t=652.15,653.23"/>
+            <text src="#sen-65"/>
+        </par>
+        <par>
+            <audio src="#t=654.22,657.13"/>
+            <text src="#sen-66"/>
+        </par>
+        <par>
+            <audio src="#t=657.20,660.15"/>
+            <text src="#sen-67"/>
+        </par>
+        <par>
+            <audio src="#t=660.16,667.11"/>
+            <text src="#sen-68"/>
+        </par>
+        <par>
+            <audio src="#t=668.15,675.07"/>
+            <text src="#sen-69"/>
+        </par>
+        <par>
+            <audio src="#t=675.24,689.13"/>
+            <text src="#sen-70"/>
+        </par>
+        <par>
+            <audio src="#t=691.05,693.24"/>
+            <text src="#sen-71"/>
+        </par>
+        <par>
+            <audio src="#t=696.16,703.21"/>
+            <text src="#sen-72"/>
+        </par>
+        <par>
+            <audio src="#t=705.10,714.05"/>
+            <text src="#sen-73"/>
+        </par>
+        <par>
+            <audio src="#t=715.16,730.24"/>
+            <text src="#sen-74"/>
+        </par>
+        <par>
+            <audio src="#t=732.16,745.04"/>
+            <text src="#sen-74-1"/>
+        </par>
+         <par>
+            <audio src="#t=747.06,761.05"/>
+            <text src="#sen-75"/>
+        </par>
+        <par>
+            <audio src="#t=762.08,764.02"/>
+            <text src="#sen-76"/>
+        </par>
+        <par>
+            <audio src="#t=765.15,770.22"/>
+            <text src="#sen-77"/>
+        </par>
+        <par>
+            <audio src="#t=771.05,773.05"/>
+            <text src="#sen-78"/>
+        </par>
+        <par>
+            <audio src="#t=774.06,776.21"/>
+            <text src="#sen-79"/>
+        </par>
+        <par>
+            <audio src="#t=779.15,789.21"/>
+            <text src="#sen-80"/>
+        </par>
+        <par>
+            <audio src="#t=791.08,793.16"/>
+            <text src="#sen-81"/>
+        </par>
+        <par>
+            <audio src="#t=794.11,804.08"/>
+            <text src="#sen-82"/>
+        </par>
+        
+    </body>
+</smil>
