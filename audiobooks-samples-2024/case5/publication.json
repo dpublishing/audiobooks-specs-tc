@@ -1,0 +1,52 @@
+{
+    "@context": [
+        "https://schema.org",
+        "https://www.w3.org/ns/pub-context"
+        
+    ],
+    "conformsTo": "https://www.w3.org/TR/audiobooks/",
+    "type": "Audiobook",
+    "id": "uuid:1359201a-63a6-436f-be71-5360786ebf09",
+    "url": "https://dpublishing.github.io/audiobooks-samples-2024/",
+    "name": "同學會",
+    "author": {
+        "type": "Person",
+        "name": "劉芷妤"
+    },
+    "readBy": {
+        "type": "Person",
+        "name": "劉芷妤"
+    },
+    "abridged": false,
+    "accessMode": ["auditory"],
+    "accessModeSufficient": [{
+        "type": "ItemList",
+        "itemListElement": "auditory",
+        "description": "有聲書"
+    }],
+    "accessibilityFeature": ["readingOrder", "unlocked"],
+    "accessibilityHazard": "none",
+    "accessibilitySummary": "有聲書，音訊位於本地端。",
+    "dateModified": "2024-01-15",
+    "datePublished": "2024",
+    "inLanguage": "zh-TW", 
+    "readingProgression": "ltr",
+    "duration": "PT805S",
+    "readingOrder": [
+        {
+            "url": "reunion.mp3",
+            "encodingFormat": "audio/mpeg",
+            "name": "同學會",
+            "duration": "PT805S"
+        }
+    ],
+    "resources": [
+        {
+            "url": "cover.jpg",
+            "encodingFormat": "image/jpeg",
+            "name": "Cover",
+            "rel": "cover"
+            
+        }
+    ]
+}
